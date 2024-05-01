@@ -9,18 +9,26 @@ import {
 } from "react-router-dom";
 
 export function Store() {
-  const View1 = () => {};
+  const Home = () => {
+    return <h1>home</h1>;
+  };
+
+  const AboutUs = () => {
+    return <h1>AboutUs</h1>;
+  };
+
+  const Trucks = () => {
+    return <h1>Trucks</h1>;
+  };
+  
 
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/add" element={<View1 />} />
-          {/* <Route path="/view" element={<View2 />} />
-          <Route path="/update" element={<View3 />} />
-          <Route path="/delete" element={<View4 />} />
-          <Route path="/StudentInfo" element={<View5 />} />
-          <Route path="/" element={<View1 />} /> */}
+          <Route path="/Home" element={<Home />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Trucks" element={<Trucks />} />
         </Routes>
       </Router>
     </div>
