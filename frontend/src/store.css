@@ -31,7 +31,7 @@
 .basicBackground {
     background-color: #C8102E;
     /* can change height to make the red go further */
-    
+
 }
 
 .albumStyle {
@@ -42,4 +42,57 @@
 /* for about us page */
 .myContainer {
     margin-bottom: 75px;
+}
+
+.indexMain {
+    height: auto;
+    display: flex;
+}
+
+.filterDiv {
+    width: 10%;
+    height: fit-content;
+    background-color: aliceblue;
+    height: auto;
+    border-radius: 6px;
+    margin: 50px;
+    min-width: 130px;
+    padding: 17px;
+    margin-right: 25px;
+
+}
+
+.filterTitle {
+    text-align: center;
+    text-decoration: double underline;
+}
+
+.filterbyFilters {
+    text-decoration: underline;
+    text-align: center;
+}
+
+.filterStyle {
+    text-decoration: double underline;
+}
+
+.TruckDiv {
+    width: 90%;
+    height: fit-content;
+    background-color: aliceblue;
+    border-radius: 6px;
+    margin: 50px;
+    padding: 17px;
+    float: right;
+    margin-left: 25px;
+    min-width: 450px;
+}
+
+.homeLogoSize {
+    width: 80px;
+}
+
+.Storelogo {
+    width: 80px;
+    height: 80px;
 }

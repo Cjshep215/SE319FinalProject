@@ -12,52 +12,160 @@ import "./store.css";
 
 export function Store() {
   const Home = () => {
-    return <h1>home</h1>;
+    return (
+      <div className="indexMain">
+        {/* <!-- Filter div --> */}
+        <div className="filterDiv">
+          <h5 id="filterNone" className="filterTitle">
+            All Trucks
+          </h5>
+          <h4 className="filterbyFilters">Filter By</h4>
+          <h6>Type:</h6>
+          <ul className="filterStyle">
+            <p id="filterbyMexican">Mexican</p>
+            <p id="filterbyChicago">Chicago</p>
+            <p id="filterbyNoodle">Noodle</p>
+            <p id="filterbyPhilly">Philly</p>
+          </ul>
+          <h6>Allergen:</h6>
+          <ul className="filterStyle">
+            <p id="filterbyEgg">Egg</p>
+            <p id="filterbyDairy">Dairy</p>
+            <p id="filterbyPeanut">Peanut</p>
+          </ul>
+          <h6>Location:</h6>
+          <ul className="filterStyle">
+            <p id="filterbyKildee">Kildee Hall</p>
+            <p id="filterbyCarver">Carver Hall</p>
+            <p id="filterbyHoover">Hoover Hall</p>
+          </ul>
+        </div>
+        {/* <!-- List of trucks (this div doesn't currently snap when window gets to small, can use bootstrap for that if needed)--> */}
+        <div className="TruckDiv" id="truckListContainer">
+          {/* <!-- creating a grid to store each truck/information --> */}
+
+          {/* <!-- Carlos quesadillas --> */}
+          {/*  style="display: grid; margin-bottom: 25px;" */}
+          <div>
+            {/*  style="display: inline-flex;" */}
+            <div>
+              <div className = "homeLogoSize">
+                <img
+                  className="Storelogo"
+                  src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
+                ></img>
+              </div>
+              {/*  style="padding: 10px;" */}
+              <div>
+                {/*  style="left: 100%; text-decoration: underline;" */}
+                <h3>Carlos Quesadillas</h3>
+                {/* style="text-align: center;" */}
+                <h6>mexican food</h6>
+              </div>
+              {/* style="margin-top: 8px; height: auto;padding-top: 6px;" */}
+              <h5>(kildee Hall)</h5>
+            </div>
+          </div>
+
+          {/* <!-- second truck chicago treats-->
+            <div style="display: grid; margin-bottom: 25px;">
+                <div style="display: inline-flex;">
+                    <div style="width: 80px;"><img className="logo"></div>
+                    <div style="padding: 10px;">
+                        <h3 style="left: 100%; text-decoration: underline;">Carlos Quesadillas</h3>
+                        <h6 style="text-align: center;">mexican food</h6>
+                    </div>
+                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
+
+
+                </div>
+            </div> */}
+
+          {/* <!-- third cheese steak factory-->
+            <div style="display: grid; margin-bottom: 25px;">
+                <div style="display: inline-flex;">
+                    <div style="width: 80px;"><img className="logo"></div>
+                    <div style="padding: 10px;">
+                        <h3 style="left: 100%; text-decoration: underline;" ;>Carlos Quesadillas</h3>
+                        <h6 style="text-align: center;">mexican food</h6>
+                    </div>
+                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
+
+
+                </div>
+            </div> */}
+
+          {/* <!-- fourth macubana-->
+            <div style="display: grid; margin-bottom: 25px;">
+                <div style="display: inline-flex;">
+                    <div style="width: 80px;"><img className="logo"></div>
+                    <div style="padding: 10px;">
+                        <h3 style="left: 100%; text-decoration: underline;" ;>Carlos Quesadillas</h3>
+                        <h6 style="text-align: center;">mexican food</h6>
+                    </div>
+                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
+
+
+                </div>
+            </div> */}
+        </div>
+      </div>
+    );
   };
 
   const AboutUs = () => {
     return (
-        <div className="album py-5 albumStyle">
-            {/* style=" padding-bottom: 100px;" */}
-            <div className="container myContainer" >
-
-                <div className="row row-cols-1 row-cols-sm-2 g-2">
-                    {/* <!-- Connors card --> */}
-                    <div className="col">
-                        <div className="card shadow-sm">
-                            <img className="bd-placeholder-img card-img-top" width="100%"
-                                src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/ConnorProfilePicture.jpg?raw=true" role="img" focusable="false"
-                                alt="Photo of Connor">
-                            </img>
-                            <div className="card-body">
-                                <h3>Connor Shepherd</h3>
-                                <p className="card-text">I am majoring in Software Engineering at Iowa State. This year, I
-                                    am taking Computer Science 327, Software Engineering 319, CyberSecurity Engineering
-                                    230, and more.
-                                </p>
-                                <h6>Email: Cjshep@iastate.edu</h6>
-                            </div>
-                        </div>
-                    </div>
-                    {/* <!-- Lukes card --> */}
-                    <div className="col">
-                        <div className="card shadow-sm">
-                            <img className="bd-placeholder-img card-img-top" width="100%"
-                                src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/LukeProfilePicture.png?raw=true" role="img" preserveAspectRatio="16 / 9"
-                                focusable="false" alt="Photo of Luke">
-                            </img>
-                            <div className="card-body">
-                                <h3>Luke Herbsleb</h3>
-                                <p className="card-text">I am a second year student at Iowa State University. This spring
-                                    semester I am taking Coms 309, 319, 311 and more.
-                                </p>
-                                <h6>Email: lherb@iastate.edu</h6>
-                            </div>
-                        </div>
-                    </div>
+      <div className="album py-5 albumStyle">
+        {/* style=" padding-bottom: 100px;" */}
+        <div className="container myContainer">
+          <div className="row row-cols-1 row-cols-sm-2 g-2">
+            {/* <!-- Connors card --> */}
+            <div className="col">
+              <div className="card shadow-sm">
+                <img
+                  className="bd-placeholder-img card-img-top"
+                  width="100%"
+                  src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/ConnorProfilePicture.jpg?raw=true"
+                  role="img"
+                  focusable="false"
+                  alt="Photo of Connor"
+                ></img>
+                <div className="card-body">
+                  <h3>Connor Shepherd</h3>
+                  <p className="card-text">
+                    I am majoring in Software Engineering at Iowa State. This
+                    year, I am taking Computer Science 327, Software Engineering
+                    319, CyberSecurity Engineering 230, and more.
+                  </p>
+                  <h6>Email: Cjshep@iastate.edu</h6>
                 </div>
+              </div>
             </div>
+            {/* <!-- Lukes card --> */}
+            <div className="col">
+              <div className="card shadow-sm">
+                <img
+                  className="bd-placeholder-img card-img-top"
+                  width="100%"
+                  src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/LukeProfilePicture.png?raw=true"
+                  role="img"
+                  preserveAspectRatio="16 / 9"
+                  focusable="false"
+                  alt="Photo of Luke"
+                ></img>
+                <div className="card-body">
+                  <h3>Luke Herbsleb</h3>
+                  <p className="card-text">
+                    I am a second year student at Iowa State University. This
+                    spring semester I am taking Coms 309, 319, 311 and more.
+                  </p>
+                  <h6>Email: lherb@iastate.edu</h6>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     );
   };
 
@@ -66,7 +174,7 @@ export function Store() {
   };
 
   return (
-    <div className = "basicBackground">
+    <div className="basicBackground">
       {/* navbar */}
       <header>
         {/* style="background-color: #F1BE48;" */}
