@@ -27,3 +27,19 @@
     height: 80px;
     vertical-align: middle;
 }
+
+.basicBackground {
+    background-color: #C8102E;
+    /* can change height to make the red go further */
+    
+}
+
+.albumStyle {
+    --bs-bg-opacity: 1;
+    padding-bottom: 100px;
+}
+
+/* for about us page */
+.myContainer {
+    margin-bottom: 75px;
+}

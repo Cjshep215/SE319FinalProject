@@ -16,7 +16,49 @@ export function Store() {
   };
 
   const AboutUs = () => {
-    return <h1>AboutUs</h1>;
+    return (
+        <div className="album py-5 albumStyle">
+            {/* style=" padding-bottom: 100px;" */}
+            <div className="container myContainer" >
+
+                <div className="row row-cols-1 row-cols-sm-2 g-2">
+                    {/* <!-- Connors card --> */}
+                    <div className="col">
+                        <div className="card shadow-sm">
+                            <img className="bd-placeholder-img card-img-top" width="100%"
+                                src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/ConnorProfilePicture.jpg?raw=true" role="img" focusable="false"
+                                alt="Photo of Connor">
+                            </img>
+                            <div className="card-body">
+                                <h3>Connor Shepherd</h3>
+                                <p className="card-text">I am majoring in Software Engineering at Iowa State. This year, I
+                                    am taking Computer Science 327, Software Engineering 319, CyberSecurity Engineering
+                                    230, and more.
+                                </p>
+                                <h6>Email: Cjshep@iastate.edu</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <!-- Lukes card --> */}
+                    <div className="col">
+                        <div className="card shadow-sm">
+                            <img className="bd-placeholder-img card-img-top" width="100%"
+                                src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/LukeProfilePicture.png?raw=true" role="img" preserveAspectRatio="16 / 9"
+                                focusable="false" alt="Photo of Luke">
+                            </img>
+                            <div className="card-body">
+                                <h3>Luke Herbsleb</h3>
+                                <p className="card-text">I am a second year student at Iowa State University. This spring
+                                    semester I am taking Coms 309, 319, 311 and more.
+                                </p>
+                                <h6>Email: lherb@iastate.edu</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
   };
 
   const Trucks = () => {
@@ -24,11 +66,11 @@ export function Store() {
   };
 
   return (
-    <div>
+    <div className = "basicBackground">
       {/* navbar */}
       <header>
         {/* style="background-color: #F1BE48;" */}
-        <div className="navbar">
+        <div className="navbar ">
           <div className="container">
             {/* style="color: #363636;" */}
             <Nav className="myDropdown">
