@@ -8,4 +8,22 @@
     --bs-nav-link-disabled-color: black;
     font-size: calc(1.275rem + 0.3vw);
     font-weight: 500;
+    padding-bottom: 5px;
+    align-items: center;
+}
+
+.basicFooter {
+    background-color: #F1BE48;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 75px;
+}
+
+.BottomLogo {
+    margin-right: 20px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
 }
