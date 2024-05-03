@@ -106,10 +106,11 @@
 }
 
 .map {
-    /* center the map */
-    position: relative;
-    color: #F1BE48;
-    justify-self: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    object-fit: contain;
 }
 
 .AlignText {
@@ -118,4 +119,8 @@
     top: 50%;
     left: 50%;
     transform: translate(0%, 50%);
+}
+
+.map-Image {
+    width: 100px;
 }

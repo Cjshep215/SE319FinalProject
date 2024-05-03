@@ -202,8 +202,9 @@ export function Store() {
               <div className="map">
                 <div>
                   <img
-                    src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/Iowa_State_Logo.jpg?raw=true"
-                    alt="Freedom Blog"
+                    src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/map.png?raw=true"
+                    alt="Iowa State Map"
+                    className="map-Image"
                   />
                 </div>
                 <div className="AlignText">
