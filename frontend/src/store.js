@@ -13,61 +13,62 @@ import "./store.css";
 export function Store() {
   const Home = () => {
     return (
-      <div className="indexMain">
-        {/* <!-- Filter div --> */}
-        <div className="filterDiv">
-          <h5 id="filterNone" className="filterTitle">
+      <>
+        <div className="indexMain">
+          {/* <!-- Filter div --> */}
+          <div className="filterDiv">
+            {/* <h5 id="filterNone" className="filterTitle">
             All Trucks
-          </h5>
-          <h4 className="filterbyFilters">Filter By</h4>
-          <h6>Type:</h6>
-          <ul className="filterStyle">
-            <p id="filterbyMexican">Mexican</p>
-            <p id="filterbyChicago">Chicago</p>
-            <p id="filterbyNoodle">Noodle</p>
-            <p id="filterbyPhilly">Philly</p>
-          </ul>
-          <h6>Allergen:</h6>
+          </h5> */}
+            <h4 className="filterbyFilters">Filter By</h4>
+            <h6>Type:</h6>
+            <ul className="filterStyle">
+              <p id="filterbyMexican">Mexican</p>
+              <p id="filterbyChicago">Chicago</p>
+              <p id="filterbyNoodle">Noodle</p>
+              <p id="filterbyPhilly">Philly</p>
+            </ul>
+            {/* <h6>Allergen:</h6>
           <ul className="filterStyle">
             <p id="filterbyEgg">Egg</p>
             <p id="filterbyDairy">Dairy</p>
             <p id="filterbyPeanut">Peanut</p>
-          </ul>
-          <h6>Location:</h6>
-          <ul className="filterStyle">
-            <p id="filterbyKildee">Kildee Hall</p>
-            <p id="filterbyCarver">Carver Hall</p>
-            <p id="filterbyHoover">Hoover Hall</p>
-          </ul>
-        </div>
-        {/* <!-- List of trucks (this div doesn't currently snap when window gets to small, can use bootstrap for that if needed)--> */}
-        <div className="TruckDiv" id="truckListContainer">
-          {/* <!-- creating a grid to store each truck/information --> */}
-
-          {/* <!-- Carlos quesadillas --> */}
-          {/*  style="display: grid; margin-bottom: 25px;" */}
-          <div>
-            {/*  style="display: inline-flex;" */}
-            <div>
-              <div className = "homeLogoSize">
-                <img
-                  className="Storelogo"
-                  src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
-                ></img>
-              </div>
-              {/*  style="padding: 10px;" */}
-              <div>
-                {/*  style="left: 100%; text-decoration: underline;" */}
-                <h3>Carlos Quesadillas</h3>
-                {/* style="text-align: center;" */}
-                <h6>mexican food</h6>
-              </div>
-              {/* style="margin-top: 8px; height: auto;padding-top: 6px;" */}
-              <h5>(kildee Hall)</h5>
-            </div>
+          </ul> */}
+            <h6>Location:</h6>
+            <ul className="filterStyle">
+              <p id="filterbyKildee">Kildee Hall</p>
+              <p id="filterbyCarver">Carver Hall</p>
+              <p id="filterbyHoover">Hoover Hall</p>
+            </ul>
           </div>
+          {/* <!-- List of trucks (this div doesn't currently snap when window gets to small, can use bootstrap for that if needed)--> */}
+          <div className="TruckDiv" id="truckListContainer">
+            {/* <!-- creating a grid to store each truck/information --> */}
 
-          {/* <!-- second truck chicago treats-->
+            {/* <!-- Carlos quesadillas --> */}
+            {/*  style="display: grid; margin-bottom: 25px;" */}
+            <div>
+              {/*  style="display: inline-flex;" */}
+              <div>
+                <div className="homeLogoSize">
+                  <img
+                    className="Storelogo"
+                    src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
+                  ></img>
+                </div>
+                {/*  style="padding: 10px;" */}
+                <div>
+                  {/*  style="left: 100%; text-decoration: underline;" */}
+                  <h3>Carlos Quesadillas</h3>
+                  {/* style="text-align: center;" */}
+                  <h6>mexican food</h6>
+                </div>
+                {/* style="margin-top: 8px; height: auto;padding-top: 6px;" */}
+                <h5>(kildee Hall)</h5>
+              </div>
+            </div>
+
+            {/* <!-- second truck chicago treats-->
             <div style="display: grid; margin-bottom: 25px;">
                 <div style="display: inline-flex;">
                     <div style="width: 80px;"><img className="logo"></div>
@@ -81,7 +82,7 @@ export function Store() {
                 </div>
             </div> */}
 
-          {/* <!-- third cheese steak factory-->
+            {/* <!-- third cheese steak factory-->
             <div style="display: grid; margin-bottom: 25px;">
                 <div style="display: inline-flex;">
                     <div style="width: 80px;"><img className="logo"></div>
@@ -95,7 +96,7 @@ export function Store() {
                 </div>
             </div> */}
 
-          {/* <!-- fourth macubana-->
+            {/* <!-- fourth macubana-->
             <div style="display: grid; margin-bottom: 25px;">
                 <div style="display: inline-flex;">
                     <div style="width: 80px;"><img className="logo"></div>
@@ -108,8 +109,9 @@ export function Store() {
 
                 </div>
             </div> */}
+          </div>
         </div>
-      </div>
+      </>
     );
   };
 
@@ -191,6 +193,39 @@ export function Store() {
     )
   }
 
+  const Map = () => {
+    return (
+      <div className="basicBackground mapDiv">
+        <div className="row row-cols-1">
+          <div className="col">
+            <div className="card shadow-sm">
+              <div className="map">
+                <div>
+                  <img
+                    src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/Iowa_State_Logo.jpg?raw=true"
+                    alt="Freedom Blog"
+                  />
+                </div>
+                <div className="AlignText">
+                  <h3> Carver Hall </h3>
+                </div>
+              </div>
+
+
+              <div className="card-body">
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="basicBackground">
       {/* navbar */}
@@ -241,7 +276,7 @@ export function Store() {
       {/* page */}
       <Router>
         <Routes>
-          <Route path="/Home" element={<> <Home /> <NormalFooter /> </> } />
+          <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
           <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
           <Route path="/Trucks" element={<Trucks />} />
           <Route path="/" element={<Trucks />} /> {/*default*/}
