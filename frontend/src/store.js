@@ -173,6 +173,24 @@ export function Store() {
     return <h1>Trucks</h1>;
   };
 
+  const NormalFooter = () => {
+    return (
+    <footer className="d-flex flex-wrap justify-content-between align-items-center basicFooter">
+        <div className="col-md-4 d-flex align-items-center mx-5">
+          <span className="mb-3 mb-md-0 text-body-secondary">
+            &copy; Spring 2024 SE/ComS319 Construction of User Interfaces Team:
+            103 (3/9/2024)
+          </span>
+        </div>
+        {/* style = "width: 80px; margin-right: 20px;" */}
+        <img
+          src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/Iowa_State_Logo.jpg?raw=true"
+          className="BottomLogo"
+        ></img>
+      </footer>
+    )
+  }
+
   return (
     <div className="basicBackground">
       {/* navbar */}
@@ -223,28 +241,13 @@ export function Store() {
       {/* page */}
       <Router>
         <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Home" element={<> <Home /> <NormalFooter /> </> } />
+          <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
           <Route path="/Trucks" element={<Trucks />} />
           <Route path="/" element={<Trucks />} /> {/*default*/}
         </Routes>
       </Router>
 
-      {/* <!-- Footer --> */}
-      {/* there could be some magic done here to only show basic footer in certian screens */}
-      <footer className="d-flex flex-wrap justify-content-between align-items-center basicFooter">
-        <div className="col-md-4 d-flex align-items-center mx-5">
-          <span className="mb-3 mb-md-0 text-body-secondary">
-            &copy; Spring 2024 SE/ComS319 Construction of User Interfaces Team:
-            103 (3/9/2024)
-          </span>
-        </div>
-        {/* style = "width: 80px; margin-right: 20px;" */}
-        <img
-          src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/Iowa_State_Logo.jpg?raw=true"
-          className="BottomLogo"
-        ></img>
-      </footer>
     </div>
   );
 }
