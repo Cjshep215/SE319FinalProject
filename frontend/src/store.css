@@ -119,8 +119,13 @@
     position:relative;
     top: 0%;
     left: 100%;
-    transform: translate(-70%,  -900%);
+    transform: translate(-70%,  500%);
 }
 .map-Image {
     width: 100%;
+}
+
+.facebookStyle {
+    border:none;
+    overflow:hidden;
 }
