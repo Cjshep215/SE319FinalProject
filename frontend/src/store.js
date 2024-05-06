@@ -261,7 +261,6 @@ export function Store() {
                   <map name="ISUMap">
                     <area shape="rect" coords="300,350,350,400" alt="Carver Area" onClick={(e) => console.log(e.pageX + " " + e.pageY)}></area>
                     <area shape="rect" coords="150,300,220,350" alt="Kildee" onClick={(e) => console.log(e.pageX + " " + e.pageY)}></area>
-                    
                     <area shape="rect" coords="460,130,530,200" alt="Hoover" onClick={(e) => console.log(e.pageX + " " + e.pageY)}></area>
                   </map>
                 </div>
