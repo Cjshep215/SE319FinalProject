@@ -12,12 +12,48 @@ import "./store.css";
 import Carousel from 'react-bootstrap/Carousel';
 
 export function Store() {
-  let truckListdata;
-  let currTruckdata;
+  const [myTrucks, setMyTrucks] = useState([]);
+  const [myFilteredTrucks, setFilteredTrucks] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [currTruck, setCurrTruck] = useState([]);
 
-  // fetch("").then(response)
+  useEffect(() => {
+    fetch("http://localhost:8081/listTrucks")
+      .then((response) => response.json())
+      .then((myTrucks) => setMyTrucks(myTrucks));
+  }, []);
 
   const Home = () => {
+    setFilteredTrucks(myTrucks);
+    const listTrucks = myFilteredTrucks.map((el) => (
+      <div className="row">
+        {/* image */}
+        <div className="col col-sm-3 no-gutters">
+          <img
+            className="Storelogo"
+            // src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
+            src={`${el.logoUrl}`}
+          ></img>
+        </div>
+        {/* all other info */}
+        <div className="col">
+          <div className="row">
+            <div className="row">
+              <div className="col">{el.truckName}</div>
+              <div className="col">
+                {el.locationTags[0]} {el.locationTags[1]}
+              </div>{" "}
+              {/*FIX */}
+            </div>
+            <div className="row">
+              <div className="col col-sm-3">Rating: {el.rating.rate}/5</div>
+              <div className="col">description {/*FIX */}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ));
+
     return (
       <>
         <div className="indexMain">
@@ -29,10 +65,10 @@ export function Store() {
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
-              <p id="filterbyMexican">Mexican</p>
-              <p id="filterbyChicago">Chicago</p>
-              <p id="filterbyNoodle">Noodle</p>
-              <p id="filterbyPhilly">Philly</p>
+              <p id="filterbyMexican" onClick={setFilter("mex")}>Mexican</p>
+              <p id="filterbyChicago" onClick={setFilter("Chi")}>Chicago</p>
+              <p id="filterbyNoodle" onClick={setFilter("Nood")}>Noodle</p>
+              <p id="filterbyPhilly" onClick={setFilter("Phil")}>Philly</p>
             </ul>
             {/* <h6>Allergen:</h6>
           <ul className="filterStyle">
@@ -47,14 +83,14 @@ export function Store() {
               <p id="filterbyHoover">Hoover Hall</p>
             </ul>
           </div>
-          
+
           <div className="TruckDiv" id="truckListContainer">
             <div className="container">
               {/* one truck per row */}
-              <div className="row">
-                {/* image */}
+              {/* <div className="row">
+                
                 <div className="col col-sm-3 no-gutters"><img className = "Storelogo"src = "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"></img></div>
-                {/* all other info */}
+                
 
                 <div className="col">
                   <div className="row">
@@ -69,7 +105,7 @@ export function Store() {
 
                     <div className = "row">
                       <div className = "col col-sm-3">
-                        Rating: 
+                        Rating:
                       </div>
                       <div className = "col">
                         description
@@ -77,7 +113,8 @@ export function Store() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {listTrucks}
             </div>
           </div>
         </div>

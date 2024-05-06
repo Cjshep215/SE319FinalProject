@@ -142,7 +142,7 @@
         "Sunday: Closed"
       ],
       "imageUrl": "./images/Macubana.jpg",
-      "logoUrl": "./images/Macubana_Logo.jpg",
+      "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp",
       "otherImages": [""],
       "menu": [
         "Cubano Sandwich: $7",
