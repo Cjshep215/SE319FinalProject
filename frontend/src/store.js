@@ -28,7 +28,7 @@ export function Store() {
 
     switch (filter) {
       case "filterbyMexican":
-        console.log("1");
+        console.log("0", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Mexican") {
             filterTmp.push(el);
@@ -36,7 +36,7 @@ export function Store() {
         }
         break;
       case "filterbyChicago":
-        console.log("Here");
+        console.log("1", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Chicago") {
             filterTmp.push(el);
@@ -44,7 +44,7 @@ export function Store() {
         }
         break;
       case "filterbyPhilly":
-        console.log("2");
+        console.log("2", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Philly") {
             filterTmp.push(el);
@@ -52,7 +52,7 @@ export function Store() {
         }
         break;
       case "filterbyNoodle":
-        console.log("3");
+        console.log("3", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Noodle") {
             filterTmp.push(el);
@@ -60,7 +60,7 @@ export function Store() {
         }
         break;
       case "filterbyCarver":
-        console.log("4");
+        console.log("4", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "carverHall") {
@@ -70,7 +70,7 @@ export function Store() {
         }
         break;
       case "filterbyKildee":
-        console.log("5");
+        console.log("5", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "kildeeHall") {
@@ -79,29 +79,29 @@ export function Store() {
           }
         }
         break;
-      case 'filterbyHoover': //Always reverts to this?
-        console.log("6 Hoover??", filter);
+      case "filterbyHoover": //Always reverts to this?
+        console.log("6", filter);
         for (let i = 0; i < myTrucks.length; i++) {
-          console.log(myTrucks[i]);
+          // console.log(myTrucks[i]);
           for (let j = 0; j < myTrucks[i].locationTags.length; j++) {
-            console.log(myTrucks[i].locationTags[j]);
+            // console.log(myTrucks[i].locationTags[j]);
             if (myTrucks[i].locationTags[j] === "hooverHall") {
               filterTmp.push(myTrucks[i]);
-              console.log(filterTmp);
+              // console.log(filterTmp);
             }
           }
         }
         break;
       default:
-        console.log("7");
+        console.log("7", filter);
         for (let i = 0; i < myTrucks.length; i++) {
-          console.log(myTrucks[i]);
+          // console.log(myTrucks[i]);
           filterTmp.push(myTrucks[i]);
         }
         break;
     }
       
-      console.log(filterTmp);
+      // console.log(filterTmp);
     // setFilteredTrucks(filterTmp);
     setFilteredTrucks(myTrucks);
 
@@ -259,7 +259,7 @@ export function Store() {
   };
 
   const Trucks = () => {
-    if (!currTruck){
+    if (!currTruck || currTruck.length < 1){
       setCurrTruck(myTrucks[0]); //Defualt
     }
 
@@ -276,14 +276,16 @@ export function Store() {
       arrayTmp.push(imageArray[i]);
     }
 
+    console.log(currTruck);
+    console.log(arrayTmp);
     const carouselItems = arrayTmp.map((el) => (
-      <Carousel.Item>
-        <img src={el} alt="Carousel Image" ></img>
+      <Carousel.Item key={el}>
+        <img src={el} alt={"Url:" + el} ></img>
       </Carousel.Item>
     ));
 
     const truckHours = currTruck.truckHours.map((el) => (
-      <p className="card-text">{el}</p>
+      <p className="card-text" key={el}>{el}</p>
     ));
 
     return (
@@ -294,15 +296,6 @@ export function Store() {
             <div className="col firstTruckCol">
               <div className="card shadow-sm firstTruckCardPadding">
                 <Carousel>
-                  {/* <Carousel.Item>
-                    <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item> */}
                   {carouselItems}
                 </Carousel>
 
@@ -400,34 +393,35 @@ export function Store() {
   }
 
   const TrucksFooter = () => {
+    if (!currTruck || currTruck.length < 1){
+      setCurrTruck(myTrucks[0]); //Defualt
+    }
+
+    if (!currTruck){
+      return (<h1>Error</h1>);
+    }
+
+    const footerInfo = currTruck.otherInfo.map((el) => (
+      <p className="bottomBarLinks" key={el}>{el}</p>
+    ));
+
     return (
       <footer className="TrucksFooter">
-        <div class="bottomBar">
+        <div className="bottomBar">
           <img
             id="footerLogo"
-            class="BottomLogo"
-            src="otherImages/Carlos_Quesadilas_Logo.webp"
+            className="BottomLogo"
+            src={currTruck.logoUrl}
           ></img>
 
           <div
             id="footerLinkDiv"
-            // style="display: block; margin-left: 20px; text-decoration: underline;"
+            style={{display: "block", marginLeft: 20, textDecoration: "underline"}}
           >
-            <p class="bottomBarLinks" id="footerInfo1">
-              link number 1
-            </p>
-            <p class="bottomBarLinks" id="footerInfo2">
-              link number 2
-            </p>
-            <p class="bottomBarLinks" id="footerInfo3">
-              link number 3
-            </p>
-            <p class="bottomBarLinks" id="footerInfo4">
-              link number 4
-            </p>
+            {footerInfo}
           </div>
         </div>
-        <span class="mb-3 mb-md-0 text-body-secondary">
+        <span className="mb-3 mb-md-0 text-body-secondary">
           &copy; 2024 Team: 103
         </span>
       </footer>
@@ -453,9 +447,9 @@ export function Store() {
                     style={{width: 720}}
                   />
                   <map name="ISUMap">
-                    <area shape="rect" coords="200,230,250,280" alt="Carver Area" onClick={(e) => console.log("C " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => console.log("H " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => console.log(" " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="200,230,250,280" alt="Carver" onClick={(e) => {console.log("C " + e.pageX + " " + e.pageY); setFilter("filterbyCarver")}}></area>
+                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => {console.log("H " + e.pageX + " " + e.pageY); setFilter("filterbyHoover")}}></area>
+                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => {console.log("K " + e.pageX + " " + e.pageY); setFilter("filterbyKildee")}}></area>
                   </map>
                 </div>
               </div>
@@ -519,7 +513,7 @@ export function Store() {
           <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
           <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
           <Route path="/Trucks" element={<><Trucks /> <TrucksFooter /></>} />
-          <Route path="/" element={<Home />} /> {/*default*/}
+          <Route path="/" element={<> <Home /> <Map /> <NormalFooter /> </> } /> {/*default*/}
         </Routes>
       </Router>
 
