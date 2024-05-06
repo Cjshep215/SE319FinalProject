@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { NavDropdown, Dropdown, Nav } from "react-bootstrap";
 import "./store.css";
+import Carousel from 'react-bootstrap/Carousel';
 
 export function Store() {
   let truckListdata;
@@ -143,51 +144,93 @@ export function Store() {
   const Trucks = () => {
     return (
       <>
-        <div class="container">
-
+        <div className="container trucksMargin">
           {/* edit the style to match proposal */}
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div className="col firstTruckCol">
+              <div className="card shadow-sm firstTruckCardPadding">
+                <Carousel>
+                  <Carousel.Item>
+                    <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
+                  </Carousel.Item>
+                  <Carousel.Item>
+                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
+                  </Carousel.Item>
+                </Carousel>
+
+                {/* times go here */}
+                <div className="card-body">
+                  <p className="card-text">
+                    Place the times of the truck here
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* make this col wider */}
+            <div className="col truckMiddleSize">
+              <div className="card shadow-sm">
+                <svg
+                  className="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                    Thumbnail
+                  </text>
+                </svg>
+                <div className="card-body">
+                  <p className="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="btn-group">
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-outline-secondary"
+                      >
+                        View
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-outline-secondary"
+                      >
+                        Edit
+                      </button>
                     </div>
-                    <small class="text-body-secondary">9 mins</small>
+                    <small className="text-body-secondary">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="500"  scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div className="col fixedFacebookWidth">
+              <div className="card shadow-sm fixedFacebookWidth">
+                <div className="card-body smallerCardPadding">
+                  <iframe
+                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                    width="340"
+                    height="500"
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  ></iframe>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
       </>
     );
   };
@@ -209,6 +252,41 @@ export function Store() {
       </footer>
     )
   }
+
+  const TrucksFooter = () => {
+    return (
+      <footer className="TrucksFooter">
+        <div class="bottomBar">
+          <img
+            id="footerLogo"
+            class="BottomLogo"
+            src="otherImages/Carlos_Quesadilas_Logo.webp"
+          ></img>
+
+          <div
+            id="footerLinkDiv"
+            // style="display: block; margin-left: 20px; text-decoration: underline;"
+          >
+            <p class="bottomBarLinks" id="footerInfo1">
+              link number 1
+            </p>
+            <p class="bottomBarLinks" id="footerInfo2">
+              link number 2
+            </p>
+            <p class="bottomBarLinks" id="footerInfo3">
+              link number 3
+            </p>
+            <p class="bottomBarLinks" id="footerInfo4">
+              link number 4
+            </p>
+          </div>
+        </div>
+        <span class="mb-3 mb-md-0 text-body-secondary">
+          &copy; 2024 Team: 103
+        </span>
+      </footer>
+    );
+  };
 
   const Map = () => {
     return (
@@ -294,8 +372,8 @@ export function Store() {
         <Routes>
           <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
           <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
-          <Route path="/Trucks" element={<Trucks />} />
-          <Route path="/" element={<Trucks />} /> {/*default*/}
+          <Route path="/Trucks" element={<><Trucks /> <TrucksFooter /></>} />
+          <Route path="/" element={<Home />} /> {/*default*/}
         </Routes>
       </Router>
 
