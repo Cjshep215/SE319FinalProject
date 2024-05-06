@@ -11,6 +11,11 @@ import { NavDropdown, Dropdown, Nav } from "react-bootstrap";
 import "./store.css";
 
 export function Store() {
+  let truckListdata;
+  let currTruckdata;
+
+  fetch("").then(response)
+
   const Home = () => {
     return (
       <>
@@ -225,8 +230,8 @@ export function Store() {
                   />
                   <map name="ISUMap">
                     <area shape="rect" coords="200,230,250,280" alt="Carver Area" onClick={(e) => console.log("C " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="120,200,150,240" alt="Kildee" onClick={(e) => console.log("K " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="320,90,380,130" alt="Hoover" onClick={(e) => console.log("H " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => console.log("H " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => console.log(" " + e.pageX + " " + e.pageY)}></area>
                   </map>
                 </div>
               </div>
