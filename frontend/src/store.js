@@ -28,7 +28,7 @@ export function Store() {
 
     switch (filter) {
       case "filterbyMexican":
-        console.log("1");
+        console.log("0", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Mexican") {
             filterTmp.push(el);
@@ -36,7 +36,7 @@ export function Store() {
         }
         break;
       case "filterbyChicago":
-        console.log("Here");
+        console.log("1", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Chicago") {
             filterTmp.push(el);
@@ -44,7 +44,7 @@ export function Store() {
         }
         break;
       case "filterbyPhilly":
-        console.log("2");
+        console.log("2", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Philly") {
             filterTmp.push(el);
@@ -52,7 +52,7 @@ export function Store() {
         }
         break;
       case "filterbyNoodle":
-        console.log("3");
+        console.log("3", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Noodle") {
             filterTmp.push(el);
@@ -60,7 +60,7 @@ export function Store() {
         }
         break;
       case "filterbyCarver":
-        console.log("4");
+        console.log("4", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "carverHall") {
@@ -70,7 +70,7 @@ export function Store() {
         }
         break;
       case "filterbyKildee":
-        console.log("5");
+        console.log("5", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "kildeeHall") {
@@ -79,29 +79,29 @@ export function Store() {
           }
         }
         break;
-      case 'filterbyHoover': //Always reverts to this?
-        console.log("6 Hoover??", filter);
+      case "filterbyHoover": //Always reverts to this?
+        console.log("6", filter);
         for (let i = 0; i < myTrucks.length; i++) {
-          console.log(myTrucks[i]);
+          // console.log(myTrucks[i]);
           for (let j = 0; j < myTrucks[i].locationTags.length; j++) {
-            console.log(myTrucks[i].locationTags[j]);
+            // console.log(myTrucks[i].locationTags[j]);
             if (myTrucks[i].locationTags[j] === "hooverHall") {
               filterTmp.push(myTrucks[i]);
-              console.log(filterTmp);
+              // console.log(filterTmp);
             }
           }
         }
         break;
       default:
-        console.log("7");
+        console.log("7", filter);
         for (let i = 0; i < myTrucks.length; i++) {
-          console.log(myTrucks[i]);
+          // console.log(myTrucks[i]);
           filterTmp.push(myTrucks[i]);
         }
         break;
     }
       
-      console.log(filterTmp);
+      // console.log(filterTmp);
     // setFilteredTrucks(filterTmp);
     setFilteredTrucks(myTrucks);
 
@@ -111,7 +111,6 @@ export function Store() {
         <div className="col col-sm-3 no-gutters Storelogo">
           <img
             className="Storelogo"
-            // src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
             src={`${el.logoUrl}`}
           ></img>
         </div>
@@ -139,9 +138,9 @@ export function Store() {
         <div className="indexMain">
           {/* <!-- Filter div --> */}
           <div className="filterDiv">
-            {/* <h5 id="filterNone" className="filterTitle">
+            <h5 id="filterNone" className="filterTitle" onClick={setFilter("")}>
             All Trucks
-          </h5> */}
+          </h5>
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
@@ -150,12 +149,6 @@ export function Store() {
               <p id="filterbyNoodle" onClick={setFilter("filterbyNoodle")}>Noodle</p>
               <p id="filterbyPhilly" onClick={setFilter("filterbyPhilly")}>Philly</p>
             </ul>
-            {/* <h6>Allergen:</h6>
-          <ul className="filterStyle">
-            <p id="filterbyEgg">Egg</p>
-            <p id="filterbyDairy">Dairy</p>
-            <p id="filterbyPeanut">Peanut</p>
-          </ul> */}
             <h6>Location:</h6>
             <ul className="filterStyle">
               <p id="filterbyKildee" onClick={setFilter("filterbyKildee")}>Kildee Hall</p>
@@ -167,33 +160,6 @@ export function Store() {
           <div className="TruckDiv" id="truckListContainer">
             <div className="container">
               {/* one truck per row */}
-              {/* <div className="row">
-                
-                <div className="col col-sm-3 no-gutters"><img className = "Storelogo"src = "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"></img></div>
-                
-
-                <div className="col">
-                  <div className="row">
-                  <div className = "row">
-                      <div className = "col">
-                        title
-                      </div>
-                      <div className = "col">
-                        place
-                      </div>
-                    </div>
-
-                    <div className = "row">
-                      <div className = "col col-sm-3">
-                        Rating:
-                      </div>
-                      <div className = "col">
-                        description
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
               {listTrucks}
             </div>
           </div>
@@ -259,13 +225,16 @@ export function Store() {
   };
 
   const Trucks = () => {
-    if (!currTruck){
-      setCurrTruck(myTrucks[0]); //Defualt
+    setCurrTruck(myTrucks[0]); //Defualt
+    if (!currTruck || currTruck.length < 1){
     }
 
-    if (!currTruck){
+    if (!currTruck|| currTruck.length < 1){
       return (<h1>Error</h1>);
     }
+    // console.log("CurTru", currTruck);
+    // console.log("all", myTrucks);
+
     let imageArray = Array(currTruck.otherImages);
     var arrayTmp = [];
 
@@ -276,14 +245,30 @@ export function Store() {
       arrayTmp.push(imageArray[i]);
     }
 
+    console.log(currTruck);
+    console.log(arrayTmp);
     const carouselItems = arrayTmp.map((el) => (
-      <Carousel.Item>
-        <img src={el} alt="Carousel Image" ></img>
+      <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
+        <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
     ));
 
     const truckHours = currTruck.truckHours.map((el) => (
-      <p className="card-text">{el}</p>
+      <p className="card-text" key={el}>{el}</p>
+    ));
+
+    const truckMenu = currTruck.menu.map((el) => (
+      <h5 className="card-text" key={el} style={{display: "flex", justifyContent: 'center'}}>{el}</h5>
+    ));
+
+    const truckComments = currTruck.commentsArray.map((el) => (
+      <div className="row" key={el.commentId} style={{display: "flex"}}>
+        <h6>
+        {el.userName} - {el.commentRating}/5
+        </h6>
+        <p className="card-text">{el.commentDescription}</p>
+
+      </div>
     ));
 
     return (
@@ -293,70 +278,32 @@ export function Store() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div className="col firstTruckCol">
               <div className="card shadow-sm firstTruckCardPadding">
-                <Carousel>
-                  {/* <Carousel.Item>
-                    <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                  <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item> */}
-                  {carouselItems}
-                </Carousel>
+                
+                <Carousel>{carouselItems}</Carousel>
 
                 {/* times go here */}
                 <div className="card-body">
-                  <p className="card-text">
-                    Place the times of the truck here
-                    {truckHours}
-                  </p>
+                  <p className="card-text">{truckHours}</p>
                 </div>
               </div>
             </div>
             {/* make this col wider */}
             <div className="col truckMiddleSize">
               <div className="card shadow-sm">
-                <svg
-                  className="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "palegoldenrod" }}
                 >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
+                  {truckMenu}
+                </div>
+              </div>
+              <br />
+              <div className="card shadow-sm">
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "white" }}
+                >
+                  {truckComments}
                 </div>
               </div>
             </div>
@@ -367,8 +314,6 @@ export function Store() {
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
                     width="340"
                     height="500"
-                    scrolling="no"
-                    frameBorder="0"
                     allowFullScreen={true}
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   ></iframe>
@@ -400,34 +345,35 @@ export function Store() {
   }
 
   const TrucksFooter = () => {
+    if (!currTruck || currTruck.length < 1){
+      setCurrTruck(myTrucks[0]); //Defualt
+    }
+
+    if (!currTruck){
+      return (<h1>Error</h1>);
+    }
+
+    const footerInfo = currTruck.otherInfo.map((el) => (
+      <p className="bottomBarLinks" key={el}>{el}</p>
+    ));
+
     return (
       <footer className="TrucksFooter">
-        <div class="bottomBar">
+        <div className="bottomBar">
           <img
             id="footerLogo"
-            class="BottomLogo"
-            src="otherImages/Carlos_Quesadilas_Logo.webp"
+            className="BottomLogo"
+            src={currTruck.logoUrl}
           ></img>
 
           <div
             id="footerLinkDiv"
-            // style="display: block; margin-left: 20px; text-decoration: underline;"
+            style={{display: "block", marginLeft: 20, textDecoration: "underline"}}
           >
-            <p class="bottomBarLinks" id="footerInfo1">
-              link number 1
-            </p>
-            <p class="bottomBarLinks" id="footerInfo2">
-              link number 2
-            </p>
-            <p class="bottomBarLinks" id="footerInfo3">
-              link number 3
-            </p>
-            <p class="bottomBarLinks" id="footerInfo4">
-              link number 4
-            </p>
+            {footerInfo}
           </div>
         </div>
-        <span class="mb-3 mb-md-0 text-body-secondary">
+        <span className="mb-3 mb-md-0 text-body-secondary">
           &copy; 2024 Team: 103
         </span>
       </footer>
@@ -453,9 +399,9 @@ export function Store() {
                     style={{width: 720}}
                   />
                   <map name="ISUMap">
-                    <area shape="rect" coords="200,230,250,280" alt="Carver Area" onClick={(e) => console.log("C " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => console.log("H " + e.pageX + " " + e.pageY)}></area>
-                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => console.log(" " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="200,230,250,280" alt="Carver" onClick={(e) => {console.log("C " + e.pageX + " " + e.pageY); setFilter("filterbyCarver")}}></area>
+                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => {console.log("H " + e.pageX + " " + e.pageY); setFilter("filterbyHoover")}}></area>
+                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => {console.log("K " + e.pageX + " " + e.pageY); setFilter("filterbyKildee")}}></area>
                   </map>
                 </div>
               </div>
@@ -519,7 +465,7 @@ export function Store() {
           <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
           <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
           <Route path="/Trucks" element={<><Trucks /> <TrucksFooter /></>} />
-          <Route path="/" element={<Home />} /> {/*default*/}
+          <Route path="/" element={<> <Home /> <Map /> <NormalFooter /> </> } /> {/*default*/}
         </Routes>
       </Router>
 
