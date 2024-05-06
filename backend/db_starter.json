@@ -12,8 +12,8 @@
         "Saturday: Closed",
         "Sunday: Closed"
       ],
-      "imageUrl": "./images/Carlos_Quesadillas.jpg",
-      "logoUrl": "./images/Carlos_Quesadilas_Logo.webp",
+      "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Carlos_Quesadillas.jpg?raw=true",
+      "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp",
       "otherImages": [""],
       "menu": [
         "Burrito: $10-$11",
@@ -57,8 +57,8 @@
         "Saturday: Closed",
         "Sunday: Closed"
       ],
-      "imageUrl": "./images/Chicago_Treats.jpg",
-      "logoUrl": "./images/Chicago_Treats_Logo.webp",
+      "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Chicago_Treats.jpg?raw=true",
+      "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Chicago_Treats_Logo.webp",
       "otherImages": [""],
       "menu": [
         "Italian Beef: $12",
@@ -105,8 +105,8 @@
         "Saturday: Closed",
         "Sunday: Closed"
       ],
-      "imageUrl": "./images/Cheese_Steak_Factory.jpg",
-      "logoUrl": "./images/Cheese_Steak_Factory_Logo.jpg",
+      "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Cheese_Steak_Factory.jpg?raw=true",
+      "logoUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Cheese_Steak_Factory_Logo.jpg?raw=true",
       "otherImages": [""],
       "menu": ["1/4 Pound: $7", "1/3 Pound: $10", "Combination (2 meats): $10"],
       "locationTags": ["carverHall"],
@@ -141,8 +141,8 @@
         "Saturday: Closed",
         "Sunday: Closed"
       ],
-      "imageUrl": "./images/Macubana.jpg",
-      "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp",
+      "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Macubana.jpg?raw=true",
+      "logoUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Macubana_Logo.jpg?raw=true",
       "otherImages": [""],
       "menu": [
         "Cubano Sandwich: $7",

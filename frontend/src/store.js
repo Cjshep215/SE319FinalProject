@@ -14,7 +14,7 @@ import Carousel from 'react-bootstrap/Carousel';
 export function Store() {
   const [myTrucks, setMyTrucks] = useState([]);
   const [myFilteredTrucks, setFilteredTrucks] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState('');
   const [currTruck, setCurrTruck] = useState([]);
 
   useEffect(() => {
@@ -24,9 +24,89 @@ export function Store() {
   }, []);
 
   const Home = () => {
+    let filterTmp = [];
+
+    switch (filter) {
+      case "filterbyMexican":
+        console.log("1");
+        for (const el of myTrucks) {
+          if (el.filterTags[0] === "Mexican") {
+            filterTmp.push(el);
+          }
+        }
+        break;
+      case "filterbyChicago":
+        console.log("Here");
+        for (const el of myTrucks) {
+          if (el.filterTags[0] === "Chicago") {
+            filterTmp.push(el);
+          }
+        }
+        break;
+      case "filterbyPhilly":
+        console.log("2");
+        for (const el of myTrucks) {
+          if (el.filterTags[0] === "Philly") {
+            filterTmp.push(el);
+          }
+        }
+        break;
+      case "filterbyNoodle":
+        console.log("3");
+        for (const el of myTrucks) {
+          if (el.filterTags[0] === "Noodle") {
+            filterTmp.push(el);
+          }
+        }
+        break;
+      case "filterbyCarver":
+        console.log("4");
+        for (const el of myTrucks) {
+          for (const loc of el.locationTags) {
+            if (loc === "carverHall") {
+              filterTmp.push(el);
+            }
+          }
+        }
+        break;
+      case "filterbyKildee":
+        console.log("5");
+        for (const el of myTrucks) {
+          for (const loc of el.locationTags) {
+            if (loc === "kildeeHall") {
+              filterTmp.push(el);
+            }
+          }
+        }
+        break;
+      case 'filterbyHoover': //Always reverts to this?
+        console.log("6 Hoover??", filter);
+        for (let i = 0; i < myTrucks.length; i++) {
+          console.log(myTrucks[i]);
+          for (let j = 0; j < myTrucks[i].locationTags.length; j++) {
+            console.log(myTrucks[i].locationTags[j]);
+            if (myTrucks[i].locationTags[j] === "hooverHall") {
+              filterTmp.push(myTrucks[i]);
+              console.log(filterTmp);
+            }
+          }
+        }
+        break;
+      default:
+        console.log("7");
+        for (let i = 0; i < myTrucks.length; i++) {
+          console.log(myTrucks[i]);
+          filterTmp.push(myTrucks[i]);
+        }
+        break;
+    }
+      
+      console.log(filterTmp);
+    // setFilteredTrucks(filterTmp);
     setFilteredTrucks(myTrucks);
+
     const listTrucks = myFilteredTrucks.map((el) => (
-      <div className="row">
+      <div className="row" key={el.truckID}>
         {/* image */}
         <div className="col col-sm-3 no-gutters">
           <img
@@ -65,10 +145,10 @@ export function Store() {
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
-              <p id="filterbyMexican" onClick={setFilter("mex")}>Mexican</p>
-              <p id="filterbyChicago" onClick={setFilter("Chi")}>Chicago</p>
-              <p id="filterbyNoodle" onClick={setFilter("Nood")}>Noodle</p>
-              <p id="filterbyPhilly" onClick={setFilter("Phil")}>Philly</p>
+              <p id="filterbyMexican" onClick={() => {console.log("filterMex"); setFilter("filterbyMexican")}}>Mexican</p>
+              <p id="filterbyChicago" onClick={setFilter("filterbyChicago")}>Chicago</p>
+              <p id="filterbyNoodle" onClick={setFilter("filterbyNoodle")}>Noodle</p>
+              <p id="filterbyPhilly" onClick={setFilter("filterbyPhilly")}>Philly</p>
             </ul>
             {/* <h6>Allergen:</h6>
           <ul className="filterStyle">
@@ -78,9 +158,9 @@ export function Store() {
           </ul> */}
             <h6>Location:</h6>
             <ul className="filterStyle">
-              <p id="filterbyKildee">Kildee Hall</p>
-              <p id="filterbyCarver">Carver Hall</p>
-              <p id="filterbyHoover">Hoover Hall</p>
+              <p id="filterbyKildee" onClick={setFilter("filterbyKildee")}>Kildee Hall</p>
+              <p id="filterbyCarver" onClick={setFilter("filterbyCarver")}>Carver Hall</p>
+              <p id="filterbyHoover" onClick={setFilter("filterbyHoover")}>Hoover Hall</p>
             </ul>
           </div>
 
@@ -179,6 +259,33 @@ export function Store() {
   };
 
   const Trucks = () => {
+    if (!currTruck){
+      setCurrTruck(myTrucks[0]); //Defualt
+    }
+
+    if (!currTruck){
+      return (<h1>Error</h1>);
+    }
+    let imageArray = Array(currTruck.otherImages);
+    var arrayTmp = [];
+
+    arrayTmp.push(currTruck.imageUrl);
+    arrayTmp.push(currTruck.logoUrl);
+
+    for (let i = 0; i < imageArray.length; i++){
+      arrayTmp.push(imageArray[i]);
+    }
+
+    const carouselItems = arrayTmp.map((el) => (
+      <Carousel.Item>
+        <img src={el} alt="Carousel Image" ></img>
+      </Carousel.Item>
+    ));
+
+    const truckHours = currTruck.truckHours.map((el) => (
+      <p className="card-text">{el}</p>
+    ));
+
     return (
       <>
         <div className="container trucksMargin">
@@ -187,7 +294,7 @@ export function Store() {
             <div className="col firstTruckCol">
               <div className="card shadow-sm firstTruckCardPadding">
                 <Carousel>
-                  <Carousel.Item>
+                  {/* <Carousel.Item>
                     <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
                   </Carousel.Item>
                   <Carousel.Item>
@@ -195,13 +302,15 @@ export function Store() {
                   </Carousel.Item>
                   <Carousel.Item>
                   <img src = "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438079255_944054677724200_3322962393491933598_n.jpg?stp=dst-jpg_p235x350&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=BwHqTVGaekYQ7kNvgHp7wgS&_nc_ht=scontent-msp1-1.xx&oh=00_AfAWeilQjQOVgan3gXjkuMQQ7P2jdnj8E6FxAQKXk7IY9w&oe=663DF82F"></img>
-                  </Carousel.Item>
+                  </Carousel.Item> */}
+                  {carouselItems}
                 </Carousel>
 
                 {/* times go here */}
                 <div className="card-body">
                   <p className="card-text">
                     Place the times of the truck here
+                    {truckHours}
                   </p>
                 </div>
               </div>
