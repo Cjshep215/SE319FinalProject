@@ -15,7 +15,7 @@ export function Store() {
   let truckListdata;
   let currTruckdata;
 
-  fetch("").then(response)
+  // fetch("").then(response)
 
   const Home = () => {
     return (
