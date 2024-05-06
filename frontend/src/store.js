@@ -248,6 +248,41 @@ export function Store() {
     )
   }
 
+  const TrucksFooter = () => {
+    return (
+      <footer className="TrucksFooter">
+        <div class="bottomBar">
+          <img
+            id="footerLogo"
+            class="BottomLogo"
+            src="otherImages/Carlos_Quesadilas_Logo.webp"
+          ></img>
+
+          <div
+            id="footerLinkDiv"
+            // style="display: block; margin-left: 20px; text-decoration: underline;"
+          >
+            <p class="bottomBarLinks" id="footerInfo1">
+              link number 1
+            </p>
+            <p class="bottomBarLinks" id="footerInfo2">
+              link number 2
+            </p>
+            <p class="bottomBarLinks" id="footerInfo3">
+              link number 3
+            </p>
+            <p class="bottomBarLinks" id="footerInfo4">
+              link number 4
+            </p>
+          </div>
+        </div>
+        <span class="mb-3 mb-md-0 text-body-secondary">
+          &copy; 2024 Team: 103
+        </span>
+      </footer>
+    );
+  };
+
   const Map = () => {
     return (
       <div className="basicBackground mapDiv" style={{display: "flex", justifyContent: 'center'}}>
@@ -332,8 +367,8 @@ export function Store() {
         <Routes>
           <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
           <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
-          <Route path="/Trucks" element={<Trucks />} />
-          <Route path="/" element={<Trucks />} /> {/*default*/}
+          <Route path="/Trucks" element={<><Trucks /> <TrucksFooter /></>} />
+          <Route path="/" element={<Home />} /> {/*default*/}
         </Routes>
       </Router>
 
