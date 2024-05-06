@@ -111,7 +111,6 @@ export function Store() {
         <div className="col col-sm-3 no-gutters">
           <img
             className="Storelogo"
-            // src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
             src={`${el.logoUrl}`}
           ></img>
         </div>
@@ -139,9 +138,9 @@ export function Store() {
         <div className="indexMain">
           {/* <!-- Filter div --> */}
           <div className="filterDiv">
-            {/* <h5 id="filterNone" className="filterTitle">
+            <h5 id="filterNone" className="filterTitle" onClick={setFilter("")}>
             All Trucks
-          </h5> */}
+          </h5>
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
@@ -150,12 +149,6 @@ export function Store() {
               <p id="filterbyNoodle" onClick={setFilter("filterbyNoodle")}>Noodle</p>
               <p id="filterbyPhilly" onClick={setFilter("filterbyPhilly")}>Philly</p>
             </ul>
-            {/* <h6>Allergen:</h6>
-          <ul className="filterStyle">
-            <p id="filterbyEgg">Egg</p>
-            <p id="filterbyDairy">Dairy</p>
-            <p id="filterbyPeanut">Peanut</p>
-          </ul> */}
             <h6>Location:</h6>
             <ul className="filterStyle">
               <p id="filterbyKildee" onClick={setFilter("filterbyKildee")}>Kildee Hall</p>
@@ -167,33 +160,6 @@ export function Store() {
           <div className="TruckDiv" id="truckListContainer">
             <div className="container">
               {/* one truck per row */}
-              {/* <div className="row">
-                
-                <div className="col col-sm-3 no-gutters"><img className = "Storelogo"src = "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"></img></div>
-                
-
-                <div className="col">
-                  <div className="row">
-                  <div className = "row">
-                      <div className = "col">
-                        title
-                      </div>
-                      <div className = "col">
-                        place
-                      </div>
-                    </div>
-
-                    <div className = "row">
-                      <div className = "col col-sm-3">
-                        Rating:
-                      </div>
-                      <div className = "col">
-                        description
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
               {listTrucks}
             </div>
           </div>
@@ -259,13 +225,16 @@ export function Store() {
   };
 
   const Trucks = () => {
+    setCurrTruck(myTrucks[0]); //Defualt
     if (!currTruck || currTruck.length < 1){
-      setCurrTruck(myTrucks[0]); //Defualt
     }
 
-    if (!currTruck){
+    if (!currTruck|| currTruck.length < 1){
       return (<h1>Error</h1>);
     }
+    // console.log("CurTru", currTruck);
+    // console.log("all", myTrucks);
+
     let imageArray = Array(currTruck.otherImages);
     var arrayTmp = [];
 
@@ -279,13 +248,27 @@ export function Store() {
     console.log(currTruck);
     console.log(arrayTmp);
     const carouselItems = arrayTmp.map((el) => (
-      <Carousel.Item key={el}>
-        <img src={el} alt={"Url:" + el} ></img>
+      <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
+        <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
     ));
 
     const truckHours = currTruck.truckHours.map((el) => (
       <p className="card-text" key={el}>{el}</p>
+    ));
+
+    const truckMenu = currTruck.menu.map((el) => (
+      <h5 className="card-text" key={el} style={{display: "flex", justifyContent: 'center'}}>{el}</h5>
+    ));
+
+    const truckComments = currTruck.commentsArray.map((el) => (
+      <div className="row" key={el.commentId} style={{display: "flex"}}>
+        <h6>
+        {el.userName} - {el.commentRating}/5
+        </h6>
+        <p className="card-text">{el.commentDescription}</p>
+
+      </div>
     ));
 
     return (
@@ -295,61 +278,32 @@ export function Store() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div className="col firstTruckCol">
               <div className="card shadow-sm firstTruckCardPadding">
-                <Carousel>
-                  {carouselItems}
-                </Carousel>
+                
+                <Carousel>{carouselItems}</Carousel>
 
                 {/* times go here */}
                 <div className="card-body">
-                  <p className="card-text">
-                    Place the times of the truck here
-                    {truckHours}
-                  </p>
+                  <p className="card-text">{truckHours}</p>
                 </div>
               </div>
             </div>
             {/* make this col wider */}
             <div className="col truckMiddleSize">
               <div className="card shadow-sm">
-                <svg
-                  className="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "palegoldenrod" }}
                 >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    Thumbnail
-                  </text>
-                </svg>
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
+                  {truckMenu}
+                </div>
+              </div>
+              <br />
+              <div className="card shadow-sm">
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "white" }}
+                >
+                  {truckComments}
                 </div>
               </div>
             </div>
@@ -360,8 +314,6 @@ export function Store() {
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
                     width="340"
                     height="500"
-                    scrolling="no"
-                    frameBorder="0"
                     allowFullScreen={true}
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   ></iframe>
