@@ -250,28 +250,28 @@ export function Store() {
 
   const Map = () => {
     return (
-      <div className="basicBackground mapDiv">
+      <div className="basicBackground mapDiv" style={{display: "flex", justifyContent: 'center'}}>
         <div className="row row-cols-1">
           <div className="col">
-            <div className="card shadow-sm">
-              <div className="map">
-              <div className="AlignText">
-                  <h3> Carver Hall </h3>
+            <div className="card shadow-sm" style={{width: 740}}>
+              <div className="map" style={{display: "flex", justifyContent: 'center', padding: 10}}>
+                <div className="AlignText">
+                  {/* <h3> Carver Hall </h3> */}
                 </div>
                 <div>
                   <img
                     src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/map.png?raw=true"
                     alt="Iowa State Map"
                     className="map-Image"
+                    useMap="#ISUMap"
+                    style={{width: 720}}
                   />
+                  <map name="ISUMap">
+                    <area shape="rect" coords="200,230,250,280" alt="Carver Area" onClick={(e) => console.log("C " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="120,200,150,240" alt="Kildee" onClick={(e) => console.log("K " + e.pageX + " " + e.pageY)}></area>
+                    <area shape="rect" coords="320,90,380,130" alt="Hoover" onClick={(e) => console.log("H " + e.pageX + " " + e.pageY)}></area>
+                  </map>
                 </div>
-              </div>
-              <div className="card-body">
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
               </div>
             </div>
           </div>
