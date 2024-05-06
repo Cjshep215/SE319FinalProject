@@ -41,74 +41,38 @@ export function Store() {
               <p id="filterbyHoover">Hoover Hall</p>
             </ul>
           </div>
-          {/* <!-- List of trucks (this div doesn't currently snap when window gets to small, can use bootstrap for that if needed)--> */}
+          
           <div className="TruckDiv" id="truckListContainer">
-            {/* <!-- creating a grid to store each truck/information --> */}
+            <div className="container">
+              {/* one truck per row */}
+              <div className="row">
+                {/* image */}
+                <div className="col col-sm-3 no-gutters"><img className = "Storelogo"src = "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"></img></div>
+                {/* all other info */}
 
-            {/* <!-- Carlos quesadillas --> */}
-            {/*  style="display: grid; margin-bottom: 25px;" */}
-            <div>
-              {/*  style="display: inline-flex;" */}
-              <div>
-                <div className="homeLogoSize">
-                  <img
-                    className="Storelogo"
-                    src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
-                  ></img>
+                <div className="col">
+                  <div className="row">
+                  <div className = "row">
+                      <div className = "col">
+                        title
+                      </div>
+                      <div className = "col">
+                        place
+                      </div>
+                    </div>
+
+                    <div className = "row">
+                      <div className = "col col-sm-3">
+                        Rating: 
+                      </div>
+                      <div className = "col">
+                        description
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {/*  style="padding: 10px;" */}
-                <div>
-                  {/*  style="left: 100%; text-decoration: underline;" */}
-                  <h3>Carlos Quesadillas</h3>
-                  {/* style="text-align: center;" */}
-                  <h6>mexican food</h6>
-                </div>
-                {/* style="margin-top: 8px; height: auto;padding-top: 6px;" */}
-                <h5>(kildee Hall)</h5>
               </div>
             </div>
-
-            {/* <!-- second truck chicago treats-->
-            <div style="display: grid; margin-bottom: 25px;">
-                <div style="display: inline-flex;">
-                    <div style="width: 80px;"><img className="logo"></div>
-                    <div style="padding: 10px;">
-                        <h3 style="left: 100%; text-decoration: underline;">Carlos Quesadillas</h3>
-                        <h6 style="text-align: center;">mexican food</h6>
-                    </div>
-                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
-
-
-                </div>
-            </div> */}
-
-            {/* <!-- third cheese steak factory-->
-            <div style="display: grid; margin-bottom: 25px;">
-                <div style="display: inline-flex;">
-                    <div style="width: 80px;"><img className="logo"></div>
-                    <div style="padding: 10px;">
-                        <h3 style="left: 100%; text-decoration: underline;" ;>Carlos Quesadillas</h3>
-                        <h6 style="text-align: center;">mexican food</h6>
-                    </div>
-                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
-
-
-                </div>
-            </div> */}
-
-            {/* <!-- fourth macubana-->
-            <div style="display: grid; margin-bottom: 25px;">
-                <div style="display: inline-flex;">
-                    <div style="width: 80px;"><img className="logo"></div>
-                    <div style="padding: 10px;">
-                        <h3 style="left: 100%; text-decoration: underline;" ;>Carlos Quesadillas</h3>
-                        <h6 style="text-align: center;">mexican food</h6>
-                    </div>
-                    <h5 style="margin-top: 8px; height: auto;padding-top: 6px;">(kildee Hall)</h5>
-
-
-                </div>
-            </div> */}
           </div>
         </div>
       </>

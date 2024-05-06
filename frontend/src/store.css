@@ -97,6 +97,17 @@
     height: 80px;
 }
 
+.logoDiv {
+    width: 80px;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+
+}
+
 .mapDiv {
     background-color: #C8102E;
     margin-top: 0px;
