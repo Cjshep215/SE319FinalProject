@@ -108,7 +108,7 @@ export function Store() {
     const listTrucks = myFilteredTrucks.map((el) => (
       <div className="row" key={el.truckID}>
         {/* image */}
-        <div className="col col-sm-3 no-gutters">
+        <div className="col col-sm-3 no-gutters Storelogo">
           <img
             className="Storelogo"
             // src="https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp"
@@ -116,7 +116,7 @@ export function Store() {
           ></img>
         </div>
         {/* all other info */}
-        <div className="col">
+        <div className="col homeStoreName">
           <div className="row">
             <div className="row">
               <div className="col">{el.truckName}</div>
