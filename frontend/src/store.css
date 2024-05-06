@@ -140,3 +140,32 @@
     border:none;
     overflow:hidden;
 }
+
+.fixedFacebookWidth {
+    width: 351px;
+    margin-bottom: 70px;
+}
+
+.trucksMargin {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    max-width: 1300px;
+}
+
+.smallerCardPadding {
+    padding: 4px
+}
+
+.firstTruckCol {
+    width: 300px;
+}
+
+.firstTruckCardPadding {
+    padding:4px;
+}
+
+.truckMiddleSize {
+    width: 600px;
+}
