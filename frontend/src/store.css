@@ -216,4 +216,5 @@
 .dontBeAButton {
     border-width: 0;
     background-color: aliceblue;
+    text-align: left;
 }
