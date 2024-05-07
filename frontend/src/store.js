@@ -344,7 +344,8 @@ export function Store() {
               <div className="card shadow-sm fixedFacebookWidth">
                 <div className="card-body smallerCardPadding">
                   <iframe
-                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                  //                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                    src = {currTruck.facebookUrl}
                     width="340"
                     height="500"
                     allowFullScreen={true}
