@@ -235,7 +235,7 @@ export function Store() {
     // console.log("CurTru", currTruck);
     // console.log("all", myTrucks);
 
-    let imageArray = Array(currTruck.otherImages);
+    let imageArray = currTruck.otherImages;
     var arrayTmp = [];
 
     arrayTmp.push(currTruck.imageUrl);
@@ -247,7 +247,7 @@ export function Store() {
 
     console.log(currTruck);
     console.log(arrayTmp);
-    const carouselItems = Array(arrayTmp).map((el) => (
+    const carouselItems = arrayTmp.map((el) => (
       <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
         <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
@@ -283,7 +283,7 @@ export function Store() {
 
                 {/* times go here */}
                 <div className="card-body">
-                  <p className="card-text">{truckHours}</p>
+                  <div className="card-text">{truckHours}</div>
                 </div>
               </div>
             </div>
