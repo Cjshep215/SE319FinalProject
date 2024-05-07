@@ -92,13 +92,13 @@ export function Store() {
           }
         }
         break;
-      default:
-        console.log("7", filter);
-        for (let i = 0; i < myTrucks.length; i++) {
-          // console.log(myTrucks[i]);
-          filterTmp.push(myTrucks[i]);
-        }
-        break;
+      // default:
+      //   console.log("7", filter);
+      //   for (let i = 0; i < myTrucks.length; i++) {
+      //     // console.log(myTrucks[i]);
+      //     filterTmp.push(myTrucks[i]);
+      //   }
+      //   break;
     }
       
       // console.log(filterTmp);
@@ -108,14 +108,14 @@ export function Store() {
     const listTrucks = myFilteredTrucks.map((el) => (
       <div className="row" key={el.truckID}>
         {/* image */}
-        <div className="col col-sm-3 no-gutters">
+        <div className="col col-sm-3 no-gutters Storelogo">
           <img
             className="Storelogo"
             src={`${el.logoUrl}`}
           ></img>
         </div>
         {/* all other info */}
-        <div className="col">
+        <div className="col homeStoreName">
           <div className="row">
             <div className="row">
               <div className="col">{el.truckName}</div>
@@ -145,15 +145,15 @@ export function Store() {
             <h6>Type:</h6>
             <ul className="filterStyle">
               <p id="filterbyMexican" onClick={() => {console.log("filterMex"); setFilter("filterbyMexican")}}>Mexican</p>
-              <p id="filterbyChicago" onClick={setFilter("filterbyChicago")}>Chicago</p>
-              <p id="filterbyNoodle" onClick={setFilter("filterbyNoodle")}>Noodle</p>
-              <p id="filterbyPhilly" onClick={setFilter("filterbyPhilly")}>Philly</p>
+              <p id="filterbyChicago" onClick={() => setFilter("filterbyChicago")}>Chicago</p>
+              <p id="filterbyNoodle" onClick={() => setFilter("filterbyNoodle")}>Noodle</p>
+              <p id="filterbyPhilly" onClick={() => setFilter("filterbyPhilly")}>Philly</p>
             </ul>
             <h6>Location:</h6>
             <ul className="filterStyle">
-              <p id="filterbyKildee" onClick={setFilter("filterbyKildee")}>Kildee Hall</p>
-              <p id="filterbyCarver" onClick={setFilter("filterbyCarver")}>Carver Hall</p>
-              <p id="filterbyHoover" onClick={setFilter("filterbyHoover")}>Hoover Hall</p>
+              <p id="filterbyKildee" onClick={() => setFilter("filterbyKildee")}>Kildee Hall</p>
+              <p id="filterbyCarver" onClick={() => setFilter("filterbyCarver")}>Carver Hall</p>
+              <p id="filterbyHoover" onClick={() => setFilter("filterbyHoover")}>Hoover Hall</p>
             </ul>
           </div>
 
