@@ -92,13 +92,13 @@ export function Store() {
           }
         }
         break;
-      default:
-        console.log("7", filter);
-        for (let i = 0; i < myTrucks.length; i++) {
-          // console.log(myTrucks[i]);
-          filterTmp.push(myTrucks[i]);
-        }
-        break;
+      // default:
+      //   console.log("7", filter);
+      //   for (let i = 0; i < myTrucks.length; i++) {
+      //     // console.log(myTrucks[i]);
+      //     filterTmp.push(myTrucks[i]);
+      //   }
+      //   break;
     }
       
       // console.log(filterTmp);
@@ -145,15 +145,15 @@ export function Store() {
             <h6>Type:</h6>
             <ul className="filterStyle">
               <p id="filterbyMexican" onClick={() => {console.log("filterMex"); setFilter("filterbyMexican")}}>Mexican</p>
-              <p id="filterbyChicago" onClick={setFilter("filterbyChicago")}>Chicago</p>
-              <p id="filterbyNoodle" onClick={setFilter("filterbyNoodle")}>Noodle</p>
-              <p id="filterbyPhilly" onClick={setFilter("filterbyPhilly")}>Philly</p>
+              <p id="filterbyChicago" onClick={() => setFilter("filterbyChicago")}>Chicago</p>
+              <p id="filterbyNoodle" onClick={() => setFilter("filterbyNoodle")}>Noodle</p>
+              <p id="filterbyPhilly" onClick={() => setFilter("filterbyPhilly")}>Philly</p>
             </ul>
             <h6>Location:</h6>
             <ul className="filterStyle">
-              <p id="filterbyKildee" onClick={setFilter("filterbyKildee")}>Kildee Hall</p>
-              <p id="filterbyCarver" onClick={setFilter("filterbyCarver")}>Carver Hall</p>
-              <p id="filterbyHoover" onClick={setFilter("filterbyHoover")}>Hoover Hall</p>
+              <p id="filterbyKildee" onClick={() => setFilter("filterbyKildee")}>Kildee Hall</p>
+              <p id="filterbyCarver" onClick={() => setFilter("filterbyCarver")}>Carver Hall</p>
+              <p id="filterbyHoover" onClick={() => setFilter("filterbyHoover")}>Hoover Hall</p>
             </ul>
           </div>
 
