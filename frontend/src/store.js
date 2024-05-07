@@ -9,7 +9,7 @@ import {
   useParams,
   useLocation,
 } from "react-router-dom";
-import { NavDropdown, Dropdown, Nav } from "react-bootstrap";
+import { NavDropdown, Dropdown, Nav, DropdownItemText } from "react-bootstrap";
 import "./store.css";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -19,6 +19,12 @@ export function Store() {
   const [filter, setFilter] = useState("");
   const [is_filtered, set_Is_filtered] = useState(false);
   const [currTruck, setCurrTruck] = useState([]);
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   function setFilteredList() {
     if (is_filtered) {
@@ -294,8 +300,8 @@ export function Store() {
     if (!currTruckDisplay) {
       return <h2>Awaiting Response</h2>;
     }
-    console.log("CurId", currId);
-    console.log("Want", currTruckDisplay);
+    // console.log("CurId", currId);
+    // console.log("Want", currTruckDisplay);
 
     let imageArray = currTruckDisplay.otherImages;
     var arrayTmp = [];
@@ -329,8 +335,85 @@ export function Store() {
       </h5>
     ));
 
+    const onSubmit = (data) => {
+      console.log(data);
+      let newCount = currTruckDisplay.rating.count + 1;
+      let newRate = (currTruckDisplay.rating.rate + data.ratingRate) / newCount;
+      let newObj = {
+        "commentId": newCount,
+        "userName": data.name,
+        "commentRating": data.rating,
+        "commentDescription": data.comment
+      };
+      let newArray = currTruckDisplay.commentsArray;
+      newArray.push(newObj);
+
+      console.log("R C", newCount, newRate);
+      console.log("newObj", newObj);
+
+      fetch(`http://localhost:8081/updateTruck/` + currTruckDisplay.truckID, {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          rating: {
+            rate: newRate,
+            count: newCount,
+          },
+          commentsArray: newArray,
+        }),
+      }).then((response) => response.json());
+    };
+
+    const truckNewComment = (
+      <>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="container mt-3 pb-1"
+          id="infoForm"
+        >
+          <div className="form-row" style={{display: "flex"}}>
+            <div>
+              <input
+                {...register("name", { required: true })}
+                placeholder="Name"
+                className="form-control"
+              />
+              {errors.name && (
+                <p className="text-danger">A name is required.</p>
+              )}
+              </div>
+            <div>
+              <input
+                {...register("rating", { required: true })}
+                placeholder="Rating out of 5"
+                className="form-control"
+                max={5.0}
+                min={0.0}
+              />
+              {errors.rating && (
+                <p className="text-danger">A rating is required.</p>
+              )}
+            </div>
+          </div>
+          <div className="form-group">
+            <textarea
+              {...register("comment", { required: true })}
+              className="form-control"
+              rows={2}
+              placeholder="Your comment"
+            ></textarea>
+            {errors.comment && (
+              <p className="text-danger">A comment is required.</p>
+            )}
+          </div>
+
+          <button type="submit">Post Review</button>
+        </form>
+      </>
+    );
+
     const truckComments = currTruckDisplay.commentsArray.map((el) => (
-      <div className="row" key={el.commentId} style={{ display: "flex" }}>
+      <div className="row" key={el.commentId} style={{ display: "flex"}}>
         <h6>
           {el.userName} - {el.commentRating}/5
         </h6>
@@ -361,8 +444,9 @@ export function Store() {
                 </div>
               </div>
               <br />
-              <div className="card shadow-sm">
-                <div className="card-body" style={{ backgroundColor: "white" }}>
+              <div className="card shadow-sm" style={{ backgroundColor: "lightgray"}}>
+                  {truckNewComment}
+                <div className="card-body" style={{ backgroundColor: "white", margin: 2}}>
                   {truckComments}
                 </div>
               </div>

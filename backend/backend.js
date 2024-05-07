@@ -83,50 +83,40 @@ app.post("/addTruck", async (req, res) => {
   }
 });
 
-app.delete("/deleteTruck/:id", async (req, res) => {
-  try {
-    const id = Number(req.params.id);
-    await client.connect();
-    console.log("Truck to delete :", id);
-    const query = { id: id };
+// app.delete("/deleteTruck/:id", async (req, res) => {
+//   try {
+//     const id = Number(req.params.id);
+//     await client.connect();
+//     console.log("Truck to delete :", id);
+//     const query = { id: id };
 
-    const truckDeleted = await db
-      .collection("trucks")
-      .findOne(query);
+//     const truckDeleted = await db
+//       .collection("trucks")
+//       .findOne(query);
 
-    // delete
-    const results = await db.collection("trucks").deleteOne(query);
-    res.status(200);
-    // res.send(results);
-    res.send(truckDeleted);
-  } catch (error) {
-    console.error("Error deleting truck:", error);
-    res.status(500).send({ message: "Internal Server Error" });
-  }
-});
+//     // delete
+//     const results = await db.collection("trucks").deleteOne(query);
+//     res.status(200);
+//     // res.send(results);
+//     res.send(truckDeleted);
+//   } catch (error) {
+//     console.error("Error deleting truck:", error);
+//     res.status(500).send({ message: "Internal Server Error" });
+//   }
+// });
 
 app.put("/updateTruck/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const query = { id: id };
+  const truckid = Number(req.params.id);
+  const query = { truckID: truckid };
 
   await client.connect();
-  console.log("Truck to Update :", id);
+  console.log("Truck to Update :", truckid);
 
   // Data for updating the document, typically comes from the request body
   console.log(req.body);
 
   const updateData = {
     $set: {
-      truckName: req.body.truckNname,
-      truckId: Number(req.body.truckId),
-      truckHours: Array(req.body.truckHours),
-      imageUrl: req.body.imageUrl,
-      logoUrl: req.body.logoUrl,
-      otherImages: Array(req.body.otherImages),
-      menu: Array(req.body.menu),
-      locationTags: Array(req.body.locationTags),
-      filterTags: Array(req.body.filterTags),
-      otherInfo: Array(req.body.otherInfo),
       rating: {
         rate: req.body.ratingRate,
         count: req.body.ratingCount,
