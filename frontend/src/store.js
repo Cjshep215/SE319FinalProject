@@ -6,6 +6,8 @@ import {
   Route,
   Routes,
   useNavigate,
+  useParams,
+  useLocation,
 } from "react-router-dom";
 import { NavDropdown, Dropdown, Nav } from "react-bootstrap";
 import "./store.css";
@@ -225,43 +227,48 @@ export function Store() {
   };
 
   const Trucks = () => {
-    if (!currTruck || currTruck.length < 1){
-      // setCurrTruck(myTrucks[0]); //Defualt
+    const location = useLocation();
+    let currId = Number(location.pathname.substring(8)) - 1;
+    
+    if (currId < 0 || currId > 3){
+      currId = 0;
     }
+    let currTruckDisplay = myTrucks[currId];
 
-    if (!currTruck|| currTruck.length < 1){
-      return (<h1>Error</h1>);
-    }
-    // console.log("CurTru", currTruck);
-    // console.log("all", myTrucks);
+    console.log("CurTru", currTruck);
+    console.log("CurId", currId);
+    console.log("Want", currTruckDisplay);
 
-    let imageArray = currTruck.otherImages;
+
+    // console.log("imageArrayPre", currTruck);
+    let imageArray = (currTruckDisplay.otherImages);
+    // console.log("imageArrayPost", imageArray);
     var arrayTmp = [];
 
-    arrayTmp.push(currTruck.imageUrl);
-    arrayTmp.push(currTruck.logoUrl);
+    arrayTmp.push(currTruckDisplay.imageUrl);
+    arrayTmp.push(currTruckDisplay.logoUrl);
 
     for (let i = 0; i < imageArray.length; i++){
       arrayTmp.push(imageArray[i]);
     }
 
-    console.log(currTruck);
-    console.log(arrayTmp);
+    // console.log(currTruck);
+    // console.log(arrayTmp);
     const carouselItems = arrayTmp.map((el) => (
       <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
         <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
     ));
 
-    const truckHours = currTruck.truckHours.map((el) => (
+    const truckHours = currTruckDisplay.truckHours.map((el) => (
       <p className="card-text" key={el}>{el}</p>
     ));
 
-    const truckMenu = currTruck.menu.map((el) => (
+    const truckMenu = currTruckDisplay.menu.map((el) => (
       <h5 className="card-text" key={el} style={{display: "flex", justifyContent: 'center'}}>{el}</h5>
     ));
 
-    const truckComments = currTruck.commentsArray.map((el) => (
+    const truckComments = currTruckDisplay.commentsArray.map((el) => (
       <div className="row" key={el.commentId} style={{display: "flex"}}>
         <h6>
         {el.userName} - {el.commentRating}/5
@@ -345,22 +352,22 @@ export function Store() {
   }
 
   const TrucksFooter = () => {
-    if (!currTruck || currTruck.length < 1){
-      setCurrTruck(myTrucks[0]); //Defualt
+    const location = useLocation();
+    let currId = Number(location.pathname.substring(8)) - 1;
+    
+    if (currId < 0 || currId > 3){
+      currId = 0;
     }
-
-    if (!currTruck){
-      return (<h1>Error</h1>);
-    }
-
+    let currTruckDisplay = myTrucks[currId];
+    
     let footerInfo;
 
     try {
-      footerInfo = currTruck.otherInfo.map((el) => (
+      footerInfo = currTruckDisplay.otherInfo.map((el) => (
           <p className="bottomBarLinks" key={el}>{el}</p>
       ));
     } catch (error){
-      footerInfo = Array(currTruck.otherInfo).map((el) => (
+      footerInfo = Array(currTruckDisplay.otherInfo).map((el) => (
         <p className="bottomBarLinks" key={el}>{el}</p>
     ));
     }
@@ -371,7 +378,7 @@ export function Store() {
           <img
             id="footerLogo"
             className="BottomLogo"
-            src={currTruck.logoUrl}
+            src={currTruckDisplay.logoUrl}
           ></img>
 
           <div
@@ -379,10 +386,6 @@ export function Store() {
             style={{display: "block", marginLeft: 20, textDecoration: "underline"}}
           >
             {footerInfo}
-            {/* <p className="bottomBarLinks">{currTruck.otherInfo[0]}</p>
-            <p className="bottomBarLinks">{currTruck.otherInfo[1]}</p>
-            <p className="bottomBarLinks">{currTruck.otherInfo[2]}</p>
-            <p className="bottomBarLinks">{currTruck.otherInfo[3]}</p> */}
           </div>
         </div>
         <span className="mb-3 mb-md-0 text-body-secondary">
@@ -439,26 +442,22 @@ export function Store() {
                 menuVariant="light"
               >
                 <NavDropdown.Item
-                  href="/Trucks"
-                  onClick={() => setCurrTruck(myTrucks[0])}
+                  href="/Trucks/1"
                 >
                   Carlos Quesadillas
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  href="/Trucks"
-                  onClick={() => setCurrTruck(myTrucks[1])}
+                  href="/Trucks/2"
                 >
                   Chicago Treats
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  href="/Trucks"
-                  onClick={() => setCurrTruck(myTrucks[2])}
+                  href="/Trucks/3"
                 >
                   The Cheesesteak Factory
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  href="/Trucks"
-                  onClick={() => setCurrTruck(myTrucks[3])}
+                  href="/Trucks/4"
                 >
                   Macubana
                 </NavDropdown.Item>
@@ -507,7 +506,7 @@ export function Store() {
             }
           />
           <Route
-            path="/Trucks"
+            path="/Trucks/:id"
             element={
               <>
                 <Trucks /> <TrucksFooter />
