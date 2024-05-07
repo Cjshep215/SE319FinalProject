@@ -176,53 +176,61 @@ export function Store() {
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
-              <p
+              <button
                 id="filterbyMexican"
+                className="dontBeAButtonUl"
                 onClick={() => {
                   setFilter("filterbyMexican");
+                  console.log("mexican")
                 }}
               >
                 Mexican
-              </p>
-              <p
+              </button>
+              <button
                 id="filterbyChicago"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyChicago")}
               >
                 Chicago
-              </p>
-              <p
+              </button>
+              <button
                 id="filterbyNoodle"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyNoodle")}
               >
                 Noodle
-              </p>
-              <p
+              </button>
+              <button
                 id="filterbyPhilly"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyPhilly")}
               >
                 Philly
-              </p>
+              </button>
             </ul>
             <h6>Location:</h6>
             <ul className="filterStyle">
-              <p
+              <button
                 id="filterbyKildee"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyKildee")}
               >
                 Kildee Hall
-              </p>
-              <p
+              </button>
+              <button
                 id="filterbyCarver"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyCarver")}
               >
                 Carver Hall
-              </p>
-              <p
+              </button>
+              <button
                 id="filterbyHoover"
+                className="dontBeAButtonUl"
                 onClick={() => setFilter("filterbyHoover")}
               >
                 Hoover Hall
-              </p>
+              </button>
             </ul>
           </div>
 
