@@ -16,16 +16,15 @@ import Carousel from 'react-bootstrap/Carousel';
 export function Store() {
   const [myTrucks, setMyTrucks] = useState([]);
   const [myFilteredTrucks, setFilteredTrucks] = useState([]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
+  const [is_filtered, set_Is_filtered] = useState(false);
   const [currTruck, setCurrTruck] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8081/listTrucks")
-      .then((response) => response.json())
-      .then((myTrucks) => setMyTrucks(myTrucks));
-  }, []);
+  function setFilteredList(){
+    if (is_filtered){
+      return;
+    }
 
-  const Home = () => {
     let filterTmp = [];
 
     switch (filter) {
@@ -94,17 +93,41 @@ export function Store() {
           }
         }
         break;
-      // default:
-      //   console.log("7", filter);
-      //   for (let i = 0; i < myTrucks.length; i++) {
-      //     // console.log(myTrucks[i]);
-      //     filterTmp.push(myTrucks[i]);
-      //   }
-      //   break;
+      case "none":
+        console.log("7", filter);
+        for (let i = 0; i < myTrucks.length; i++) {
+          // console.log(myTrucks[i]);
+          filterTmp.push(myTrucks[i]);
+        }
+        break;
+      default:
+        if (filterTmp.length < 1){
+          for (let i = 0; i < myTrucks.length; i++) {
+            // console.log(myTrucks[i]);
+            filterTmp.push(myTrucks[i]);
+          }
+        }
+        break;
     }
       
-      // console.log(filterTmp);
-    // setFilteredTrucks(filterTmp);
+    set_Is_filtered(true);
+    setFilteredTrucks(filterTmp);
+    // setFilteredTrucks(myTrucks);
+  }
+
+  useEffect(() => {
+    set_Is_filtered(false);
+    // setFilteredTrucks();
+  }, [filter]);
+
+  useEffect(() => {
+    fetch("http://localhost:8081/listTrucks")
+      .then((response) => response.json())
+      .then((myTrucks) => setMyTrucks(myTrucks));
+  }, []);
+
+  const Home = () => {
+    // setFilteredList();
     setFilteredTrucks(myTrucks);
 
     const listTrucks = myFilteredTrucks.map((el) => (
@@ -140,13 +163,13 @@ export function Store() {
         <div className="indexMain">
           {/* <!-- Filter div --> */}
           <div className="filterDiv">
-            <h5 id="filterNone" className="filterTitle" onClick={setFilter("")}>
+            <h5 id="filterNone" className="filterTitle" onClick={setFilter("none")}>
             All Trucks
           </h5>
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
-              <p id="filterbyMexican" onClick={() => {console.log("filterMex"); setFilter("filterbyMexican")}}>Mexican</p>
+              <p id="filterbyMexican" onClick={() => {setFilter("filterbyMexican")}}>Mexican</p>
               <p id="filterbyChicago" onClick={() => setFilter("filterbyChicago")}>Chicago</p>
               <p id="filterbyNoodle" onClick={() => setFilter("filterbyNoodle")}>Noodle</p>
               <p id="filterbyPhilly" onClick={() => setFilter("filterbyPhilly")}>Philly</p>
@@ -235,7 +258,10 @@ export function Store() {
     }
     let currTruckDisplay = myTrucks[currId];
 
-    console.log("CurTru", currTruck);
+    if (!currTruckDisplay){
+      return(<h2>Awaiting Response</h2>)
+    }
+    // console.log("CurTru", currTruck);
     console.log("CurId", currId);
     console.log("Want", currTruckDisplay);
 
@@ -359,6 +385,10 @@ export function Store() {
       currId = 0;
     }
     let currTruckDisplay = myTrucks[currId];
+
+    if (!currTruckDisplay){
+      return(<h2>Awaiting Respons</h2>)
+    }
     
     let footerInfo;
 
