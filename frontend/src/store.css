@@ -158,7 +158,7 @@
 }
 
 .firstTruckCol {
-    width: 300px;
+    width: 250px;
 }
 
 .firstTruckCardPadding {
@@ -200,4 +200,15 @@
 
 .homeStoreName {
     margin-left: 20px;
+}
+
+.truckTitle {
+    padding-right: 0px;
+    max-width: 190px; 
+    box-sizing:content-box
+}
+
+.ratings {
+    padding-right: 0px;
+    ;
 }

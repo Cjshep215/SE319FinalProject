@@ -14,7 +14,10 @@
       ],
       "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Carlos_Quesadillas.jpg?raw=true",
       "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Carlos_Quesadilas_Logo.webp",
-      "otherImages": [""],
+      "otherImages": [
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/440080661_943839044412430_5051375802819255793_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Ok-KsWJrLbMQ7kNvgErRD1s&_nc_ht=scontent-msp1-1.xx&oh=00_AfDMHaHGWfHhr1nmFgPZc5sPAdVljHHWJcrNUDqNIjbzVw&oe=66404814",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438094696_943341954462139_3318749174648335782_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=JoyDNon-Qw4Q7kNvgGty5aQ&_nc_ht=scontent-msp1-1.xx&oh=00_AfBinXYOHIA2g4r17dEivR2oiLRySRbzLrd1B61DO5aygg&oe=66407710",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438163147_937027371760264_568320553431150335_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=z_m8kALihdoQ7kNvgGRHzy1&_nc_ht=scontent-msp1-1.xx&oh=00_AfBx5Kmn60kRswHVV2QakOu0jxnNvJ01RHA3-_FMb8qlUQ&oe=66405F76"],
       "menu": [
         "Burrito: $10-$11",
         "Quesadilla: $6.50-$9",
@@ -33,8 +36,8 @@
         "Website: https://www.carlosquesadillas.com/"
       ],
       "rating": {
-        "rate": 2.4,
-        "count": 3
+        "rate": 4.3,
+        "count": 16
       },
       "commentsArray": [
         {
@@ -59,7 +62,11 @@
       ],
       "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Chicago_Treats.jpg?raw=true",
       "logoUrl": "https://raw.githubusercontent.com/Cjshep215/SE319FinalProject/main/backend/images/Chicago_Treats_Logo.webp",
-      "otherImages": [""],
+      "otherImages": [
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/438811733_903425245128085_6140427128651010755_n.jpg?stp=dst-jpg_p526x296&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=nqqsgjE7lY4Q7kNvgE4G8do&_nc_ht=scontent-msp1-1.xx&oh=00_AfAuttl05UelKPLQsrgBMnkswPabhmvTu_MIAaIXowbq5A&oe=66406C75",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/434665363_886125693524707_4903182396609715991_n.jpg?stp=cp6_dst-jpg_s600x600&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=z5NVN5Mg0HkQ7kNvgGd-o13&_nc_ht=scontent-msp1-1.xx&oh=00_AfDp-KWWH4LC6OiT52N6hrGzJTeHYwlVsf7kZxr1GdtJlg&oe=66406F35",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/429641366_861059772697966_2864512303528176131_n.jpg?stp=cp6_dst-jpg_p180x540&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=8syEYsx6aw0Q7kNvgFUK0FC&_nc_ht=scontent-msp1-1.xx&oh=00_AfBfPmDVA48h7VXnjV-vsajnDZ4_UvNxH9Eh_zYKUzjJUQ&oe=66404B6C"
+      ],
       "menu": [
         "Italian Beef: $12",
         "Chicago Dog: $9",
@@ -81,8 +88,8 @@
         "Website: https://cles-chicago-treats.square.site/"
       ],
       "rating": {
-        "rate": 2.4,
-        "count": 3
+        "rate": 4.2,
+        "count": 7
       },
       "commentsArray": [
         {
@@ -107,7 +114,11 @@
       ],
       "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Cheese_Steak_Factory.jpg?raw=true",
       "logoUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Cheese_Steak_Factory_Logo.jpg?raw=true",
-      "otherImages": [""],
+      "otherImages": [
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/277763434_385092726956574_1970918337261070177_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ZUr7bS4T_T8Q7kNvgFwxM8z&_nc_ht=scontent-msp1-1.xx&oh=00_AfAeHdl-bS8zUOXZf46p7yzbgZ0xagyU2MMuAl2qwg9ymg&oe=6640622E",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/277740393_385092730289907_7416052256344393989_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ZefDuEBO-a8Q7kNvgF9VIvW&_nc_ht=scontent-msp1-1.xx&oh=00_AfCNheHo7hu9VpIvf6f6pvIfi_ei4eKJmv1pHDywPVkfQw&oe=6640609D",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t1.6435-9/117577900_3331391153574340_3279731476627171010_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=xQcDXAlH6-YQ7kNvgG2H9M1&_nc_ht=scontent-msp1-1.xx&oh=00_AfBqE7afhrlIPYtgbjVheOq-18a-IJLJf-sce3XgYyWQsA&oe=6661E55A"
+      ],
       "menu": ["1/4 Pound: $7", "1/3 Pound: $10", "Combination (2 meats): $10"],
       "locationTags": ["carverHall"],
       "filterTags": ["Philly"],
@@ -117,8 +128,8 @@
         "Twitter: @cheesesteakisu"
       ],
       "rating": {
-        "rate": 2.4,
-        "count": 3
+        "rate": 4.7,
+        "count": 8
       },
       "commentsArray": [
         {
@@ -143,7 +154,14 @@
       ],
       "imageUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Macubana.jpg?raw=true",
       "logoUrl": "https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/images/Macubana_Logo.jpg?raw=true",
-      "otherImages": [""],
+      "otherImages": [
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/427975287_18417736075024343_9090096444844052982_n.jpg?stp=dst-jpg_s640x640&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=VhUyJGxg50cQ7kNvgHeojCN&_nc_ht=scontent-msp1-1.xx&oh=00_AfAgzJ5WHg1UZo7apuLuJ84Iden50dJl4IdzIc2ypWiKBg&oe=664047EB",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/425841670_18416467990024343_8886327870905855427_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=hFcZmbK6CHUQ7kNvgHZeSbU&_nc_ht=scontent-msp1-1.xx&oh=00_AfAOP_rDU3ltzKtKeAytnmRKE8hB1A2G4EpAO4zj-sBkIQ&oe=66404543",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/337259413_2553017808174586_5746244997654218065_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=s5qCqRfiEtYQ7kNvgECbPMx&_nc_ht=scontent-msp1-1.xx&oh=00_AfDgjtQBb_1Tl86AyI4sqRRChxbMWpSkR_2gpMpxvFBZdQ&oe=66404674",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/333524239_730872271779319_2128986243405893926_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B2XGXBCpJoUQ7kNvgF22EIK&_nc_ht=scontent-msp1-1.xx&oh=00_AfCA0mW7_WfHESxUqL0rHvxlyNzIPp0k5SfygeusgsacWw&oe=66407922",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/327684485_564252962040485_2348516282664774889_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=fQ-1UVQu9kwQ7kNvgFJNOc4&_nc_ht=scontent-msp1-1.xx&oh=00_AfCWUx2uVjWc7x5-ZmGjfUcm0o25H3Qw2VCxcNjbQLuMoQ&oe=66404538",
+        "https://scontent-msp1-1.xx.fbcdn.net/v/t39.30808-6/315834137_543450417791236_5411523460956692116_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5TH-bHAXNNAQ7kNvgH1Eu8U&_nc_ht=scontent-msp1-1.xx&oh=00_AfCdWxb5tsmd9HKz5s_4hSD-9TgrKSzySj_UfCniCoWpew&oe=664073C2"
+      ],
       "menu": [
         "Cubano Sandwich: $7",
         "Tempura Mac Attack: $6",
@@ -160,8 +178,8 @@
         "Website: https://macubana.com/"
       ],
       "rating": {
-        "rate": 2.4,
-        "count": 3
+        "rate": 4.6,
+        "count": 13
       },
       "commentsArray": [
         {
