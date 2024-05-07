@@ -225,8 +225,8 @@ export function Store() {
   };
 
   const Trucks = () => {
-    setCurrTruck(myTrucks[0]); //Defualt
     if (!currTruck || currTruck.length < 1){
+      // setCurrTruck(myTrucks[0]); //Defualt
     }
 
     if (!currTruck|| currTruck.length < 1){
@@ -247,7 +247,7 @@ export function Store() {
 
     console.log(currTruck);
     console.log(arrayTmp);
-    const carouselItems = arrayTmp.map((el) => (
+    const carouselItems = Array(arrayTmp).map((el) => (
       <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
         <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
@@ -353,9 +353,17 @@ export function Store() {
       return (<h1>Error</h1>);
     }
 
-    const footerInfo = currTruck.otherInfo.map((el) => (
-      <p className="bottomBarLinks" key={el}>{el}</p>
+    let footerInfo;
+
+    try {
+      footerInfo = currTruck.otherInfo.map((el) => (
+          <p className="bottomBarLinks" key={el}>{el}</p>
+      ));
+    } catch (error){
+      footerInfo = Array(currTruck.otherInfo).map((el) => (
+        <p className="bottomBarLinks" key={el}>{el}</p>
     ));
+    }
 
     return (
       <footer className="TrucksFooter">
@@ -371,6 +379,10 @@ export function Store() {
             style={{display: "block", marginLeft: 20, textDecoration: "underline"}}
           >
             {footerInfo}
+            {/* <p className="bottomBarLinks">{currTruck.otherInfo[0]}</p>
+            <p className="bottomBarLinks">{currTruck.otherInfo[1]}</p>
+            <p className="bottomBarLinks">{currTruck.otherInfo[2]}</p>
+            <p className="bottomBarLinks">{currTruck.otherInfo[3]}</p> */}
           </div>
         </div>
         <span className="mb-3 mb-md-0 text-body-secondary">
@@ -426,16 +438,30 @@ export function Store() {
                 title="All Trucks"
                 menuVariant="light"
               >
-                <NavDropdown.Item href="/Trucks">
+                <NavDropdown.Item
+                  href="/Trucks"
+                  onClick={() => setCurrTruck(myTrucks[0])}
+                >
                   Carlos Quesadillas
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Trucks">
+                <NavDropdown.Item
+                  href="/Trucks"
+                  onClick={() => setCurrTruck(myTrucks[1])}
+                >
                   Chicago Treats
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Trucks">
+                <NavDropdown.Item
+                  href="/Trucks"
+                  onClick={() => setCurrTruck(myTrucks[2])}
+                >
                   The Cheesesteak Factory
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Trucks">Macubana</NavDropdown.Item>
+                <NavDropdown.Item
+                  href="/Trucks"
+                  onClick={() => setCurrTruck(myTrucks[3])}
+                >
+                  Macubana
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
 
@@ -462,13 +488,44 @@ export function Store() {
       {/* page */}
       <Router>
         <Routes>
-          <Route path="/Home" element={<> <Home /> <Map /> <NormalFooter /> </> } />
-          <Route path="/AboutUs" element={<> <AboutUs /> <NormalFooter /> </>} />
-          <Route path="/Trucks" element={<><Trucks /> <TrucksFooter /></>} />
-          <Route path="/" element={<> <Home /> <Map /> <NormalFooter /> </> } /> {/*default*/}
+          <Route
+            path="/Home"
+            element={
+              <>
+                {" "}
+                <Home /> <Map /> <NormalFooter />{" "}
+              </>
+            }
+          />
+          <Route
+            path="/AboutUs"
+            element={
+              <>
+                {" "}
+                <AboutUs /> <NormalFooter />{" "}
+              </>
+            }
+          />
+          <Route
+            path="/Trucks"
+            element={
+              <>
+                <Trucks /> <TrucksFooter />
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                {" "}
+                <Home /> <Map /> <NormalFooter />{" "}
+              </>
+            }
+          />{" "}
+          {/*default*/}
         </Routes>
       </Router>
-
     </div>
   );
 }
