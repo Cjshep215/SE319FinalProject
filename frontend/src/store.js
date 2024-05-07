@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import { NavDropdown, Dropdown, Nav } from "react-bootstrap";
 import "./store.css";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
 
 export function Store() {
   const [myTrucks, setMyTrucks] = useState([]);
@@ -20,8 +20,8 @@ export function Store() {
   const [is_filtered, set_Is_filtered] = useState(false);
   const [currTruck, setCurrTruck] = useState([]);
 
-  function setFilteredList(){
-    if (is_filtered){
+  function setFilteredList() {
+    if (is_filtered) {
       return;
     }
 
@@ -101,7 +101,7 @@ export function Store() {
         }
         break;
       default:
-        if (filterTmp.length < 1){
+        if (filterTmp.length < 1) {
           for (let i = 0; i < myTrucks.length; i++) {
             // console.log(myTrucks[i]);
             filterTmp.push(myTrucks[i]);
@@ -109,7 +109,7 @@ export function Store() {
         }
         break;
     }
-      
+
     set_Is_filtered(true);
     setFilteredTrucks(filterTmp);
     // setFilteredTrucks(myTrucks);
@@ -134,10 +134,7 @@ export function Store() {
       <div className="row" key={el.truckID}>
         {/* image */}
         <div className="col col-sm-3 no-gutters Storelogo">
-          <img
-            className="Storelogo"
-            src={`${el.logoUrl}`}
-          ></img>
+          <img className="Storelogo" src={`${el.logoUrl}`}></img>
         </div>
         {/* all other info */}
         <div className="col homeStoreName">
@@ -161,32 +158,69 @@ export function Store() {
     return (
       <>
         <div className="indexMain">
-          {/* <!-- Filter div --> */}
           <div className="filterDiv">
-            <h5 id="filterNone" className="filterTitle" onClick={setFilter("none")}>
-            All Trucks
-          </h5>
+            <h5
+              id="filterNone"
+              className="filterTitle"
+              onClick={setFilter("none")}
+            >
+              All Trucks
+            </h5>
             <h4 className="filterbyFilters">Filter By</h4>
             <h6>Type:</h6>
             <ul className="filterStyle">
-              <p id="filterbyMexican" onClick={() => {setFilter("filterbyMexican")}}>Mexican</p>
-              <p id="filterbyChicago" onClick={() => setFilter("filterbyChicago")}>Chicago</p>
-              <p id="filterbyNoodle" onClick={() => setFilter("filterbyNoodle")}>Noodle</p>
-              <p id="filterbyPhilly" onClick={() => setFilter("filterbyPhilly")}>Philly</p>
+              <p
+                id="filterbyMexican"
+                onClick={() => {
+                  setFilter("filterbyMexican");
+                }}
+              >
+                Mexican
+              </p>
+              <p
+                id="filterbyChicago"
+                onClick={() => setFilter("filterbyChicago")}
+              >
+                Chicago
+              </p>
+              <p
+                id="filterbyNoodle"
+                onClick={() => setFilter("filterbyNoodle")}
+              >
+                Noodle
+              </p>
+              <p
+                id="filterbyPhilly"
+                onClick={() => setFilter("filterbyPhilly")}
+              >
+                Philly
+              </p>
             </ul>
             <h6>Location:</h6>
             <ul className="filterStyle">
-              <p id="filterbyKildee" onClick={() => setFilter("filterbyKildee")}>Kildee Hall</p>
-              <p id="filterbyCarver" onClick={() => setFilter("filterbyCarver")}>Carver Hall</p>
-              <p id="filterbyHoover" onClick={() => setFilter("filterbyHoover")}>Hoover Hall</p>
+              <p
+                id="filterbyKildee"
+                onClick={() => setFilter("filterbyKildee")}
+              >
+                Kildee Hall
+              </p>
+              <p
+                id="filterbyCarver"
+                onClick={() => setFilter("filterbyCarver")}
+              >
+                Carver Hall
+              </p>
+              <p
+                id="filterbyHoover"
+                onClick={() => setFilter("filterbyHoover")}
+              >
+                Hoover Hall
+              </p>
             </ul>
           </div>
 
           <div className="TruckDiv" id="truckListContainer">
-            <div className="container">
-              {/* one truck per row */}
-              {listTrucks}
-            </div>
+            <div className="container">{listTrucks}</div>
           </div>
         </div>
       </>
@@ -196,7 +230,6 @@ export function Store() {
   const AboutUs = () => {
     return (
       <div className="album py-5 albumStyle">
-        {/* style=" padding-bottom: 100px;" */}
         <div className="container myContainer">
           <div className="row row-cols-1 row-cols-sm-2 g-2">
             {/* <!-- Connors card --> */}
@@ -252,75 +285,72 @@ export function Store() {
   const Trucks = () => {
     const location = useLocation();
     let currId = Number(location.pathname.substring(8)) - 1;
-    
-    if (currId < 0 || currId > 3){
+
+    if (currId < 0 || currId > 3) {
       currId = 0;
     }
     let currTruckDisplay = myTrucks[currId];
 
-    if (!currTruckDisplay){
-      return(<h2>Awaiting Response</h2>)
+    if (!currTruckDisplay) {
+      return <h2>Awaiting Response</h2>;
     }
-    // console.log("CurTru", currTruck);
     console.log("CurId", currId);
     console.log("Want", currTruckDisplay);
 
-
-    // console.log("imageArrayPre", currTruck);
-    let imageArray = (currTruckDisplay.otherImages);
-    // console.log("imageArrayPost", imageArray);
+    let imageArray = currTruckDisplay.otherImages;
     var arrayTmp = [];
 
     arrayTmp.push(currTruckDisplay.imageUrl);
     arrayTmp.push(currTruckDisplay.logoUrl);
 
-    for (let i = 0; i < imageArray.length; i++){
+    for (let i = 0; i < imageArray.length; i++) {
       arrayTmp.push(imageArray[i]);
     }
 
-    // console.log(currTruck);
-    // console.log(arrayTmp);
     const carouselItems = arrayTmp.map((el) => (
-      <Carousel.Item key={el} style={{backgroundColor: "lightgray"}}>
+      <Carousel.Item key={el} style={{ backgroundColor: "lightgray" }}>
         <img src={el} alt={"Url:" + el} height="220"></img>
       </Carousel.Item>
     ));
 
     const truckHours = currTruckDisplay.truckHours.map((el) => (
-      <p className="card-text" key={el}>{el}</p>
+      <p className="card-text" key={el}>
+        {el}
+      </p>
     ));
 
     const truckMenu = currTruckDisplay.menu.map((el) => (
-      <h5 className="card-text" key={el} style={{display: "flex", justifyContent: 'center'}}>{el}</h5>
+      <h5
+        className="card-text"
+        key={el}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        {el}
+      </h5>
     ));
 
     const truckComments = currTruckDisplay.commentsArray.map((el) => (
-      <div className="row" key={el.commentId} style={{display: "flex"}}>
+      <div className="row" key={el.commentId} style={{ display: "flex" }}>
         <h6>
-        {el.userName} - {el.commentRating}/5
+          {el.userName} - {el.commentRating}/5
         </h6>
         <p className="card-text">{el.commentDescription}</p>
-
       </div>
     ));
 
     return (
       <>
         <div className="container trucksMargin">
-          {/* edit the style to match proposal */}
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div className="col firstTruckCol">
               <div className="card shadow-sm firstTruckCardPadding">
-                
                 <Carousel>{carouselItems}</Carousel>
 
-                {/* times go here */}
                 <div className="card-body">
                   <div className="card-text">{truckHours}</div>
                 </div>
               </div>
             </div>
-            {/* make this col wider */}
             <div className="col truckMiddleSize">
               <div className="card shadow-sm">
                 <div
@@ -332,10 +362,7 @@ export function Store() {
               </div>
               <br />
               <div className="card shadow-sm">
-                <div
-                  className="card-body"
-                  style={{ backgroundColor: "white" }}
-                >
+                <div className="card-body" style={{ backgroundColor: "white" }}>
                   {truckComments}
                 </div>
               </div>
@@ -344,8 +371,7 @@ export function Store() {
               <div className="card shadow-sm fixedFacebookWidth">
                 <div className="card-body smallerCardPadding">
                   <iframe
-                  //                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlosquesadillas&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-                    src = {currTruckDisplay.facebookUrl}
+                    src={currTruckDisplay.facebookUrl}
                     width="340"
                     height="500"
                     allowFullScreen={true}
@@ -362,7 +388,7 @@ export function Store() {
 
   const NormalFooter = () => {
     return (
-    <footer className="d-flex flex-wrap justify-content-between align-items-center basicFooter">
+      <footer className="d-flex flex-wrap justify-content-between align-items-center basicFooter">
         <div className="col-md-4 d-flex align-items-center mx-5">
           <span className="mb-3 mb-md-0 text-body-secondary">
             &copy; Spring 2024 SE/ComS319 Construction of User Interfaces Team:
@@ -375,32 +401,36 @@ export function Store() {
           className="BottomLogo"
         ></img>
       </footer>
-    )
-  }
+    );
+  };
 
   const TrucksFooter = () => {
     const location = useLocation();
     let currId = Number(location.pathname.substring(8)) - 1;
-    
-    if (currId < 0 || currId > 3){
+
+    if (currId < 0 || currId > 3) {
       currId = 0;
     }
     let currTruckDisplay = myTrucks[currId];
 
-    if (!currTruckDisplay){
-      return(<h2>Awaiting Respons</h2>)
+    if (!currTruckDisplay) {
+      return <h2>Awaiting Respons</h2>;
     }
-    
+
     let footerInfo;
 
     try {
       footerInfo = currTruckDisplay.otherInfo.map((el) => (
-          <p className="bottomBarLinks" key={el}>{el}</p>
+        <p className="bottomBarLinks" key={el}>
+          {el}
+        </p>
       ));
-    } catch (error){
+    } catch (error) {
       footerInfo = Array(currTruckDisplay.otherInfo).map((el) => (
-        <p className="bottomBarLinks" key={el}>{el}</p>
-    ));
+        <p className="bottomBarLinks" key={el}>
+          {el}
+        </p>
+      ));
     }
 
     return (
@@ -414,7 +444,11 @@ export function Store() {
 
           <div
             id="footerLinkDiv"
-            style={{display: "block", marginLeft: 20, textDecoration: "underline"}}
+            style={{
+              display: "block",
+              marginLeft: 20,
+              textDecoration: "underline",
+            }}
           >
             {footerInfo}
           </div>
@@ -428,26 +462,58 @@ export function Store() {
 
   const Map = () => {
     return (
-      <div className="basicBackground mapDiv" style={{display: "flex", justifyContent: 'center'}}>
+      <div
+        className="basicBackground mapDiv"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <div className="row row-cols-1">
           <div className="col">
-            <div className="card shadow-sm" style={{width: 740}}>
-              <div className="map" style={{display: "flex", justifyContent: 'center', padding: 10}}>
-                <div className="AlignText">
-                  {/* <h3> Carver Hall </h3> */}
-                </div>
+            <div className="card shadow-sm" style={{ width: 740 }}>
+              <div
+                className="map"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: 10,
+                }}
+              >
+                <div className="AlignText">{/* <h3> Carver Hall </h3> */}</div>
                 <div>
                   <img
                     src="https://github.com/Cjshep215/SE319FinalProject/blob/main/backend/otherImages/map.png?raw=true"
                     alt="Iowa State Map"
                     className="map-Image"
                     useMap="#ISUMap"
-                    style={{width: 720}}
+                    style={{ width: 720 }}
                   />
                   <map name="ISUMap">
-                    <area shape="rect" coords="200,230,250,280" alt="Carver" onClick={(e) => {console.log("C " + e.pageX + " " + e.pageY); setFilter("filterbyCarver")}}></area>
-                    <area shape="rect" coords="120,200,150,240" alt="Hoover" onClick={(e) => {console.log("H " + e.pageX + " " + e.pageY); setFilter("filterbyHoover")}}></area>
-                    <area shape="rect" coords="320,90,380,130" alt="Kildee" onClick={(e) => {console.log("K " + e.pageX + " " + e.pageY); setFilter("filterbyKildee")}}></area>
+                    <area
+                      shape="rect"
+                      coords="200,230,250,280"
+                      alt="Carver"
+                      onClick={(e) => {
+                        console.log("C " + e.pageX + " " + e.pageY);
+                        setFilter("filterbyCarver");
+                      }}
+                    ></area>
+                    <area
+                      shape="rect"
+                      coords="120,200,150,240"
+                      alt="Hoover"
+                      onClick={(e) => {
+                        console.log("H " + e.pageX + " " + e.pageY);
+                        setFilter("filterbyHoover");
+                      }}
+                    ></area>
+                    <area
+                      shape="rect"
+                      coords="320,90,380,130"
+                      alt="Kildee"
+                      onClick={(e) => {
+                        console.log("K " + e.pageX + " " + e.pageY);
+                        setFilter("filterbyKildee");
+                      }}
+                    ></area>
                   </map>
                 </div>
               </div>
@@ -472,26 +538,16 @@ export function Store() {
                 title="All Trucks"
                 menuVariant="light"
               >
-                <NavDropdown.Item
-                  href="/Trucks/1"
-                >
+                <NavDropdown.Item href="/Trucks/1">
                   Carlos Quesadillas
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/Trucks/2"
-                >
+                <NavDropdown.Item href="/Trucks/2">
                   Chicago Treats
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/Trucks/3"
-                >
+                <NavDropdown.Item href="/Trucks/3">
                   The Cheesesteak Factory
                 </NavDropdown.Item>
-                <NavDropdown.Item
-                  href="/Trucks/4"
-                >
-                  Macubana
-                </NavDropdown.Item>
+                <NavDropdown.Item href="/Trucks/4">Macubana</NavDropdown.Item>
               </NavDropdown>
             </Nav>
 
