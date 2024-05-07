@@ -140,15 +140,14 @@ export function Store() {
         <div className="col homeStoreName">
           <div className="row">
             <div className="row">
-              <div className="col">{el.truckName}</div>
+              <h4 className="col truckTitle">{el.truckName}</h4>
               <div className="col">
-                {el.locationTags[0]} {el.locationTags[1]}
+              <p>({el.locationTags[0]} {el.locationTags[1]})  </p>
               </div>{" "}
               {/*FIX */}
             </div>
             <div className="row">
-              <div className="col col-sm-3">Rating: {el.rating.rate}/5</div>
-              <div className="col">description {/*FIX */}</div>
+              <div className="col ratings">Rating: {el.rating.rate}/5 Tag: {el.filterTags}</div>
             </div>
           </div>
         </div>
