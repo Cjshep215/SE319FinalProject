@@ -135,9 +135,11 @@ export function Store() {
   const Home = () => {
     // setFilteredList();
     setFilteredTrucks(myTrucks);
+    const navigate = useNavigate();
 
     const listTrucks = myFilteredTrucks.map((el) => (
-      <div className="row" key={el.truckID}>
+      <button className="row dontBeAButton" key={el.truckID} onClick={() =>  
+        { navigate(`/Trucks/${el.truckNumber}`)}} style ={{}}>
         {/* image */}
         <div className="col col-sm-3 no-gutters Storelogo">
           <img className="Storelogo" src={`${el.logoUrl}`}></img>
@@ -157,7 +159,7 @@ export function Store() {
             </div>
           </div>
         </div>
-      </div>
+      </button>
     ));
 
     return (

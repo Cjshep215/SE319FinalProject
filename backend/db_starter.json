@@ -3,6 +3,7 @@
     {
       "truckName": "Carlos' Quesadillas",
       "truckID": "carlosQuesadillasTruck",
+      "truckNumber": 1,
       "truckHours": [
         "Monday: 11:00am - 3:00pm",
         "Tuesday: 11:00am - 3:00pm",
@@ -51,6 +52,7 @@
     {
       "truckName": "Chicago Treats",
       "truckID": "chicagoTreatsTruck",
+      "truckNumber": 2,
       "truckHours": [
         "Monday: 10:30am - 9:00pm",
         "Tuesday: 10:30am - 9:00pm",
@@ -103,6 +105,7 @@
     {
       "truckName": "The Cheesesteak Factory",
       "truckID": "cheesesteakFactoryTruck",
+      "truckNumber": 3,
       "truckHours": [
         "Monday: 11:00am - 2:00pm",
         "Tuesday: 11:00am - 2:00pm",
@@ -143,6 +146,7 @@
     {
       "truckName": "Macubana",
       "truckID": "macubanaTruck",
+      "truckNumber": 4,
       "truckHours": [
         "Monday: 11:00am - 2:00pm",
         "Tuesday: 11:00am - 2:00pm",

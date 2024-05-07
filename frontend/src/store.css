@@ -166,7 +166,7 @@
 }
 
 .truckMiddleSize {
-    width: 600px;
+    width: 53%;
 }
 
 .bottomBar {
@@ -211,4 +211,9 @@
 .ratings {
     padding-right: 0px;
     ;
+}
+
+.dontBeAButton {
+    border-width: 0;
+    background-color: "aliceblue"
 }
