@@ -346,21 +346,23 @@ export function Store() {
 
     const onSubmit = (data) => {
       console.log(data);
-      let newCount = currTruckDisplay.rating.count + 1;
-      let newRate = (currTruckDisplay.rating.rate + data.ratingRate) / newCount;
+      let newCount = currTruckDisplay.commentsArray.length + 1;
+      console.log("Count", newCount);
+      let newRate = (currTruckDisplay.rating.rate + parseFloat(data.rating)) / newCount;
+      console.log(newRate, " = ", currTruckDisplay.rating.rate, " + ", parseFloat(data.rating));
       let newObj = {
         "commentId": newCount,
         "userName": data.name,
-        "commentRating": data.rating,
+        "commentRating": parseFloat(data.rating),
         "commentDescription": data.comment
       };
       let newArray = currTruckDisplay.commentsArray;
       newArray.push(newObj);
 
-      console.log("R C", newCount, newRate);
+      console.log("C R", newCount, newRate);
       console.log("newObj", newObj);
 
-      fetch(`http://localhost:8081/updateTruck/` + currTruckDisplay.truckID, {
+      fetch(`http://localhost:8081/updateTruck/${currTruckDisplay.truckID}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -380,7 +382,7 @@ export function Store() {
           className="container mt-3 pb-1"
           id="infoForm"
         >
-          <div className="form-row" style={{display: "flex"}}>
+          <div className="form-row">
             <div>
               <input
                 {...register("name", { required: true })}
@@ -396,6 +398,8 @@ export function Store() {
                 {...register("rating", { required: true })}
                 placeholder="Rating out of 5"
                 className="form-control"
+                type="number"
+                step={".01"}
                 max={5.0}
                 min={0.0}
               />
@@ -456,6 +460,7 @@ export function Store() {
               <div className="card shadow-sm" style={{ backgroundColor: "lightgray"}}>
                   {truckNewComment}
                 <div className="card-body" style={{ backgroundColor: "white", margin: 2}}>
+                  {/* <h4>Overal Rating: {currTruckDisplay.rating.rate}/5</h4> */}
                   {truckComments}
                 </div>
               </div>

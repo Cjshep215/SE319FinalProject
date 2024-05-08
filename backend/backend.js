@@ -106,7 +106,7 @@ app.post("/addTruck", async (req, res) => {
 // });
 
 app.put("/updateTruck/:id", async (req, res) => {
-  const truckid = Number(req.params.id);
+  const truckid = req.params.id;
   const query = { truckID: truckid };
 
   await client.connect();
@@ -119,9 +119,9 @@ app.put("/updateTruck/:id", async (req, res) => {
     $set: {
       rating: {
         rate: req.body.ratingRate,
-        count: req.body.ratingCount,
+        count: req.body.ratingCount
       },
-      commentsArray: Array(req.body.commentsArray),
+      commentsArray: req.body.commentsArray,
     },
   };
 
