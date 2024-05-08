@@ -17,8 +17,11 @@ export function Store() {
   const [myTrucks, setMyTrucks] = useState([]);
   const [myFilteredTrucks, setFilteredTrucks] = useState([]);
   const [filter, setFilter] = useState("");
-  const [is_filtered, set_Is_filtered] = useState(false);
-  const [currTruck, setCurrTruck] = useState([]);
+  
+  // const [is_filtered, set_Is_filtered] = useState(false);
+  let is_filtered = false;
+  // const [currTruck, setCurrTruck] = useState([]);
+
   
   const {
     register,
@@ -116,15 +119,15 @@ export function Store() {
         break;
     }
 
-    set_Is_filtered(true);
+    is_filtered = true;
     setFilteredTrucks(filterTmp);
     // setFilteredTrucks(myTrucks);
   }
 
-  useEffect(() => {
-    set_Is_filtered(false);
-    // setFilteredTrucks();
-  }, [filter]);
+  // useEffect(() => {
+  //   set_Is_filtered(false);
+  //   // setFilteredTrucks();
+  // }, [filter]);
 
   useEffect(() => {
     fetch("http://localhost:8081/listTrucks")
@@ -133,9 +136,29 @@ export function Store() {
   }, []);
 
   const Home = () => {
-    // setFilteredList();
+    // if (!is_filtered){
+    //   setFilteredList();
+    // }
     setFilteredTrucks(myTrucks);
     const navigate = useNavigate();
+
+    function locString(stringTmp){
+      let locStr;
+      switch (stringTmp) {
+        case 'hooverHall':
+            locStr = "Hoover Hall"
+            break;
+        case 'carverHall':
+            locStr = "Carver Hall"
+            break;
+        case 'kildeeHall':
+            locStr = "Kildee Hall"
+            break;
+        default:
+            break;
+    }
+      return locStr;
+    }
 
     const listTrucks = myFilteredTrucks.map((el) => (
       <button className="row dontBeAButton" key={el.truckID} onClick={() =>  
@@ -150,7 +173,7 @@ export function Store() {
             <div className="row">
               <h4 className="col truckTitle">{el.truckName}</h4>
               <div className="col">
-              <p>({el.locationTags[0]} {el.locationTags[1]})  </p>
+              <p>({locString(el.locationTags[0])} {locString(el.locationTags[1])})  </p>
               </div>{" "}
               {/*FIX */}
             </div>
@@ -196,14 +219,14 @@ export function Store() {
               <button
                 id="filterbyNoodle"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyNoodle")}
+                onClick={() => {is_filtered = false; setFilter("filterbyNoodle");}}
               >
                 Noodle
               </button>
               <button
                 id="filterbyPhilly"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyPhilly")}
+                onClick={() => {is_filtered = false; setFilter("filterbyPhilly");}}
               >
                 Philly
               </button>
@@ -213,21 +236,21 @@ export function Store() {
               <button
                 id="filterbyKildee"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyKildee")}
+                onClick={() => {is_filtered = false; setFilter("filterbyKildee");}}
               >
                 Kildee Hall
               </button>
               <button
                 id="filterbyCarver"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyCarver")}
+                onClick={() => {is_filtered = false; setFilter("filterbyCarver");}}
               >
                 Carver Hall
               </button>
               <button
                 id="filterbyHoover"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyHoover")}
+                onClick={() => {is_filtered = false; setFilter("filterbyHoover");}}
               >
                 Hoover Hall
               </button>
@@ -592,6 +615,7 @@ export function Store() {
                       onClick={(e) => {
                         console.log("C " + e.pageX + " " + e.pageY);
                         setFilter("filterbyCarver");
+                        is_filtered = false;
                       }}
                     ></area>
                     <area
@@ -601,8 +625,9 @@ export function Store() {
                       onClick={(e) => {
                         console.log("H " + e.pageX + " " + e.pageY);
                         setFilter("filterbyHoover");
+                        is_filtered = false;
                       }}
-                    ></area>
+                      ></area>
                     <area
                       shape="rect"
                       coords="320,90,380,130"
@@ -610,6 +635,7 @@ export function Store() {
                       onClick={(e) => {
                         console.log("K " + e.pageX + " " + e.pageY);
                         setFilter("filterbyKildee");
+                        is_filtered = false;
                       }}
                     ></area>
                   </map>
