@@ -83,27 +83,27 @@ app.post("/addTruck", async (req, res) => {
   }
 });
 
-// app.delete("/deleteTruck/:id", async (req, res) => {
-//   try {
-//     const id = Number(req.params.id);
-//     await client.connect();
-//     console.log("Truck to delete :", id);
-//     const query = { id: id };
+app.delete("/deleteTruck/:id", async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    await client.connect();
+    console.log("Truck to delete :", id);
+    const query = { truckID: id };
 
-//     const truckDeleted = await db
-//       .collection("trucks")
-//       .findOne(query);
+    const truckDeleted = await db
+      .collection("trucks")
+      .findOne(query);
 
-//     // delete
-//     const results = await db.collection("trucks").deleteOne(query);
-//     res.status(200);
-//     // res.send(results);
-//     res.send(truckDeleted);
-//   } catch (error) {
-//     console.error("Error deleting truck:", error);
-//     res.status(500).send({ message: "Internal Server Error" });
-//   }
-// });
+    // delete
+    const results = await db.collection("trucks").deleteOne(query);
+    res.status(200);
+    // res.send(results);
+    res.send(truckDeleted);
+  } catch (error) {
+    console.error("Error deleting truck:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
 
 app.put("/updateTruck/:id", async (req, res) => {
   const truckid = req.params.id;
