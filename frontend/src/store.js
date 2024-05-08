@@ -30,9 +30,50 @@ export function Store() {
     formState: { errors },
   } = useForm();
 
-  function setFilteredList() {
+  function SetFilteredList() {
+    const navigate = useNavigate();
+    function locString(stringTmp){
+      let locStr;
+      switch (stringTmp) {
+        case 'hooverHall':
+            locStr = "Hoover Hall"
+            break;
+        case 'carverHall':
+            locStr = "Carver Hall"
+            break;
+        case 'kildeeHall':
+            locStr = "Kildee Hall"
+            break;
+        default:
+            break;
+    }
+      return locStr;
+    }
+
     if (is_filtered) {
-      return;
+      return (myFilteredTrucks.map((el) => (
+        <button className="row dontBeAButton" key={el.truckID} onClick={() =>  
+          { navigate(`/Trucks/${el.truckNumber}`)}} style ={{}}>
+          {/* image */}
+          <div className="col col-sm-3 no-gutters Storelogo">
+            <img className="Storelogo" src={`${el.logoUrl}`}></img>
+          </div>
+          {/* all other info */}
+          <div className="col homeStoreName">
+            <div className="row">
+              <div className="row">
+                <h4 className="col truckTitle">{el.truckName}</h4>
+                <div className="col">
+                <p>({locString(el.locationTags[0])} {locString(el.locationTags[1])})  </p>
+                </div>{" "}
+              </div>
+              <div className="row">
+                <div className="col ratings">Rating: {el.rating.rate}/5 Tag: {el.filterTags}</div>
+              </div>
+            </div>
+          </div>
+        </button>
+      )));
     }
 
     let filterTmp = [];
@@ -90,7 +131,7 @@ export function Store() {
           }
         }
         break;
-      case "filterbyHoover": //Always reverts to this?
+      case "filterbyHoover":
         console.log("6", filter);
         for (let i = 0; i < myTrucks.length; i++) {
           // console.log(myTrucks[i]);
@@ -119,16 +160,34 @@ export function Store() {
         }
         break;
     }
-
+    
     is_filtered = true;
     setFilteredTrucks(filterTmp);
-    // setFilteredTrucks(myTrucks);
-  }
+    return (filterTmp.map((el) => (
+      <button className="row dontBeAButton" key={el.truckID} onClick={() =>  
+        { navigate(`/Trucks/${el.truckNumber}`)}} style ={{}}>
+        {/* image */}
+        <div className="col col-sm-3 no-gutters Storelogo">
+          <img className="Storelogo" src={`${el.logoUrl}`}></img>
+        </div>
+        {/* all other info */}
+        <div className="col homeStoreName">
+          <div className="row">
+            <div className="row">
+              <h4 className="col truckTitle">{el.truckName}</h4>
+              <div className="col">
+              <p>({locString(el.locationTags[0])} {locString(el.locationTags[1])})  </p>
+              </div>{" "}
+            </div>
+            <div className="row">
+              <div className="col ratings">Rating: {el.rating.rate}/5 Tag: {el.filterTags}</div>
+            </div>
+          </div>
+        </div>
+      </button>
+    )));
 
-  // useEffect(() => {
-  //   set_Is_filtered(false);
-  //   // setFilteredTrucks();
-  // }, [filter]);
+  }
 
   useEffect(() => {
     fetch("http://localhost:8081/listTrucks")
@@ -137,12 +196,7 @@ export function Store() {
   }, []);
 
   const Home = () => {
-    if (!is_filtered){
-      // setFilteredList();
-    }
-    setFilteredTrucks(myTrucks);
     const navigate = useNavigate();
-
     function locString(stringTmp){
       let locStr;
       switch (stringTmp) {
@@ -160,7 +214,9 @@ export function Store() {
     }
       return locStr;
     }
+    setFilteredTrucks(myTrucks);
 
+    // const listTrucks = SetFilteredList();
     const listTrucks = myFilteredTrucks.map((el) => (
       <button className="row dontBeAButton" key={el.truckID} onClick={() =>  
         { navigate(`/Trucks/${el.truckNumber}`)}} style ={{}}>
@@ -183,7 +239,7 @@ export function Store() {
           </div>
         </div>
       </button>
-    ));
+    ))
 
     return (
       <>
@@ -354,8 +410,6 @@ export function Store() {
     if (!currTruckDisplay) {
       return <h2>Awaiting Response</h2>;
     }
-    // console.log("CurId", currId);
-    // console.log("Want", currTruckDisplay);
 
     let imageArray = currTruckDisplay.otherImages;
     var arrayTmp = [];
@@ -390,11 +444,8 @@ export function Store() {
     ));
 
     const onSubmit = (data) => {
-      console.log(data);
       let newCount = currTruckDisplay.commentsArray.length + 1;
-      console.log("Count", newCount);
       let newRate = (currTruckDisplay.rating.rate + parseFloat(data.rating)) / newCount;
-      console.log(newRate, " = ", currTruckDisplay.rating.rate, " + ", parseFloat(data.rating));
       let newObj = {
         "commentId": newCount,
         "userName": data.name,
@@ -404,8 +455,6 @@ export function Store() {
       let newArray = currTruckDisplay.commentsArray;
       newArray.push(newObj);
 
-      console.log("C R", newCount, newRate);
-      console.log("newObj", newObj);
 
       fetch(`http://localhost:8081/updateTruck/${currTruckDisplay.truckID}`, {
         method: "PUT",
@@ -505,7 +554,7 @@ export function Store() {
               <div className="card shadow-sm" style={{ backgroundColor: "lightgray"}}>
                   {truckNewComment}
                 <div className="card-body" style={{ backgroundColor: "white", margin: 2}}>
-                  {/* <h4>Overal Rating: {currTruckDisplay.rating.rate}/5</h4> */}
+                  <h4>Overal Rating: {currTruckDisplay.rating.rate}/5</h4>
                   {truckComments}
                 </div>
               </div>
