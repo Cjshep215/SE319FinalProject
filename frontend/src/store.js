@@ -16,10 +16,11 @@ import Carousel from "react-bootstrap/Carousel";
 export function Store() {
   const [myTrucks, setMyTrucks] = useState([]);
   const [myFilteredTrucks, setFilteredTrucks] = useState([]);
-  const [filter, setFilter] = useState("");
+  // const [filter, setFilter] = useState("");
   
   // const [is_filtered, set_Is_filtered] = useState(false);
   let is_filtered = false;
+  let filter = "none";
   // const [currTruck, setCurrTruck] = useState([]);
 
   
@@ -136,9 +137,9 @@ export function Store() {
   }, []);
 
   const Home = () => {
-    // if (!is_filtered){
-    //   setFilteredList();
-    // }
+    if (!is_filtered){
+      // setFilteredList();
+    }
     setFilteredTrucks(myTrucks);
     const navigate = useNavigate();
 
@@ -175,7 +176,6 @@ export function Store() {
               <div className="col">
               <p>({locString(el.locationTags[0])} {locString(el.locationTags[1])})  </p>
               </div>{" "}
-              {/*FIX */}
             </div>
             <div className="row">
               <div className="col ratings">Rating: {el.rating.rate}/5 Tag: {el.filterTags}</div>
@@ -192,7 +192,10 @@ export function Store() {
             <h5
               id="filterNone"
               className="filterTitle"
-              onClick={setFilter("none")}
+              onClick={() => {
+                is_filtered = false;
+                filter = "none";
+              }}
             >
               All Trucks
             </h5>
@@ -203,8 +206,9 @@ export function Store() {
                 id="filterbyMexican"
                 className="dontBeAButtonUl"
                 onClick={() => {
-                  setFilter("filterbyMexican");
-                  console.log("mexican")
+                  is_filtered = false;
+                  filter = "filterbyMexican";
+                  console.log("mexican");
                 }}
               >
                 Mexican
@@ -212,21 +216,30 @@ export function Store() {
               <button
                 id="filterbyChicago"
                 className="dontBeAButtonUl"
-                onClick={() => setFilter("filterbyChicago")}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyChicago";
+                }}
               >
                 Chicago
               </button>
               <button
                 id="filterbyNoodle"
                 className="dontBeAButtonUl"
-                onClick={() => {is_filtered = false; setFilter("filterbyNoodle");}}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyNoodle";
+                }}
               >
                 Noodle
               </button>
               <button
                 id="filterbyPhilly"
                 className="dontBeAButtonUl"
-                onClick={() => {is_filtered = false; setFilter("filterbyPhilly");}}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyPhilly";
+                }}
               >
                 Philly
               </button>
@@ -236,21 +249,30 @@ export function Store() {
               <button
                 id="filterbyKildee"
                 className="dontBeAButtonUl"
-                onClick={() => {is_filtered = false; setFilter("filterbyKildee");}}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyKildee";
+                }}
               >
                 Kildee Hall
               </button>
               <button
                 id="filterbyCarver"
                 className="dontBeAButtonUl"
-                onClick={() => {is_filtered = false; setFilter("filterbyCarver");}}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyCarver";
+                }}
               >
                 Carver Hall
               </button>
               <button
                 id="filterbyHoover"
                 className="dontBeAButtonUl"
-                onClick={() => {is_filtered = false; setFilter("filterbyHoover");}}
+                onClick={() => {
+                  is_filtered = false;
+                  filter = "filterbyHoover";
+                }}
               >
                 Hoover Hall
               </button>
@@ -614,7 +636,7 @@ export function Store() {
                       alt="Carver"
                       onClick={(e) => {
                         console.log("C " + e.pageX + " " + e.pageY);
-                        setFilter("filterbyCarver");
+                        filter = "filterbyCarver";
                         is_filtered = false;
                       }}
                     ></area>
@@ -624,7 +646,7 @@ export function Store() {
                       alt="Hoover"
                       onClick={(e) => {
                         console.log("H " + e.pageX + " " + e.pageY);
-                        setFilter("filterbyHoover");
+                        filter = "filterbyHoover";
                         is_filtered = false;
                       }}
                       ></area>
@@ -634,7 +656,7 @@ export function Store() {
                       alt="Kildee"
                       onClick={(e) => {
                         console.log("K " + e.pageX + " " + e.pageY);
-                        setFilter("filterbyKildee");
+                        filter = "filterbyKildee";
                         is_filtered = false;
                       }}
                     ></area>

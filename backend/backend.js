@@ -117,10 +117,10 @@ app.put("/updateTruck/:id", async (req, res) => {
 
   const updateData = {
     $set: {
-      rating: {
-        rate: req.body.ratingRate,
-        count: req.body.ratingCount
-      },
+      // rating: {
+      //   rate: req.body.ratingRate,
+      //   count: req.body.ratingCount
+      // },
       commentsArray: req.body.commentsArray,
     },
   };
