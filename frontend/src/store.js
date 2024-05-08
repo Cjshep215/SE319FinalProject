@@ -80,7 +80,7 @@ export function Store() {
 
     switch (filter) {
       case "filterbyMexican":
-        console.log("0", filter);
+        // console.log("0", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Mexican") {
             filterTmp.push(el);
@@ -88,7 +88,7 @@ export function Store() {
         }
         break;
       case "filterbyChicago":
-        console.log("1", filter);
+        // console.log("1", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Chicago") {
             filterTmp.push(el);
@@ -96,7 +96,7 @@ export function Store() {
         }
         break;
       case "filterbyPhilly":
-        console.log("2", filter);
+        // console.log("2", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Philly") {
             filterTmp.push(el);
@@ -104,7 +104,7 @@ export function Store() {
         }
         break;
       case "filterbyNoodle":
-        console.log("3", filter);
+        // console.log("3", filter);
         for (const el of myTrucks) {
           if (el.filterTags[0] === "Noodle") {
             filterTmp.push(el);
@@ -112,7 +112,7 @@ export function Store() {
         }
         break;
       case "filterbyCarver":
-        console.log("4", filter);
+        // console.log("4", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "carverHall") {
@@ -122,7 +122,7 @@ export function Store() {
         }
         break;
       case "filterbyKildee":
-        console.log("5", filter);
+        // console.log("5", filter);
         for (const el of myTrucks) {
           for (const loc of el.locationTags) {
             if (loc === "kildeeHall") {
@@ -132,7 +132,7 @@ export function Store() {
         }
         break;
       case "filterbyHoover":
-        console.log("6", filter);
+        // console.log("6", filter);
         for (let i = 0; i < myTrucks.length; i++) {
           // console.log(myTrucks[i]);
           for (let j = 0; j < myTrucks[i].locationTags.length; j++) {
@@ -145,7 +145,7 @@ export function Store() {
         }
         break;
       case "none":
-        console.log("7", filter);
+        // console.log("7", filter);
         for (let i = 0; i < myTrucks.length; i++) {
           // console.log(myTrucks[i]);
           filterTmp.push(myTrucks[i]);
@@ -264,7 +264,7 @@ export function Store() {
                 onClick={() => {
                   is_filtered = false;
                   filter = "filterbyMexican";
-                  console.log("mexican");
+                  // console.log("mexican");
                 }}
               >
                 Mexican
@@ -684,7 +684,7 @@ export function Store() {
                       coords="200,230,250,280"
                       alt="Carver"
                       onClick={(e) => {
-                        console.log("C " + e.pageX + " " + e.pageY);
+                        // console.log("C " + e.pageX + " " + e.pageY);
                         filter = "filterbyCarver";
                         is_filtered = false;
                       }}
@@ -694,7 +694,7 @@ export function Store() {
                       coords="120,200,150,240"
                       alt="Hoover"
                       onClick={(e) => {
-                        console.log("H " + e.pageX + " " + e.pageY);
+                        // console.log("H " + e.pageX + " " + e.pageY);
                         filter = "filterbyHoover";
                         is_filtered = false;
                       }}
@@ -704,7 +704,7 @@ export function Store() {
                       coords="320,90,380,130"
                       alt="Kildee"
                       onClick={(e) => {
-                        console.log("K " + e.pageX + " " + e.pageY);
+                        // console.log("K " + e.pageX + " " + e.pageY);
                         filter = "filterbyKildee";
                         is_filtered = false;
                       }}
